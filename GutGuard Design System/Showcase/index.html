@@ -1,0 +1,3444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GutGuard Design System — Visual Showcase</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter+Tight:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bone: #F4F1EA;
+      --bone-soft: #EBE7DE;
+      --bone-deep: #DDD7C8;
+      --paper: #FCFAF5;
+      --blue: #0608A9;
+      --blue-press: #04067A;
+      --gold: #B08D5B;
+      --gold-soft: #C9AC7E;
+      --ink: #0F0F18;
+      --ink-2: #3A3A48;
+      --ink-3: #6B6B7A;
+      --ink-4: #A0A0AE;
+      --rule: #D8D2C2;
+      --rule-soft: #E5E0D2;
+      --error: #B0202E;
+      --error-text: #8F1824;
+      --serif: "Fraunces", "Times New Roman", serif;
+      --sans: "Inter Tight", system-ui, sans-serif;
+      --r-sm: 10px;
+      --r-md: 14px;
+      --r-lg: 24px;
+      --r-pill: 999px;
+      --shadow-card: 0 14px 36px rgba(15, 15, 24, 0.07);
+      --shadow-modal: 0 24px 80px rgba(15, 15, 24, 0.28);
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      color: var(--ink);
+      background-color: var(--bone);
+      background-image: radial-gradient(circle at 1px 1px, rgba(15, 15, 24, 0.025) 1px, transparent 0);
+      background-size: 3px 3px;
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+    button, input, select, textarea { font: inherit; }
+    button { cursor: pointer; border: none; background: none; color: inherit; }
+    a { color: var(--blue); }
+    :focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+
+    /* —— layout —— */
+    .frame {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      min-height: 100vh;
+    }
+    .nav {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow: auto;
+      padding: 28px 20px 40px;
+      border-right: 1px solid var(--rule);
+      background: rgba(252, 250, 245, 0.92);
+      backdrop-filter: blur(10px);
+    }
+    .nav-brand {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .nav-brand strong {
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+    .nav-brand em {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 18px;
+      color: var(--blue);
+      font-weight: 400;
+    }
+    .nav-sub {
+      font-size: 12px;
+      color: var(--ink-3);
+      margin-bottom: 24px;
+      line-height: 1.4;
+    }
+    .nav a {
+      display: block;
+      padding: 9px 12px;
+      border-radius: var(--r-sm);
+      color: var(--ink-2);
+      text-decoration: none;
+      font-size: 13.5px;
+      font-weight: 600;
+    }
+    .nav a:hover { color: var(--blue); background: rgba(6, 8, 169, 0.06); }
+    .nav .group {
+      margin-top: 18px;
+      margin-bottom: 6px;
+      padding: 0 12px;
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+    }
+    .main { padding: 40px 48px 96px; max-width: 1080px; }
+    .hero { margin-bottom: 48px; padding-bottom: 32px; border-bottom: 1px solid var(--ink); }
+    .eyebrow {
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 12px;
+    }
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(40px, 6vw, 64px);
+      font-weight: 400;
+      letter-spacing: -0.025em;
+      line-height: 0.95;
+      margin-bottom: 14px;
+    }
+    .hero h1 em { color: var(--blue); font-style: italic; }
+    .hero p { max-width: 46ch; color: var(--ink-2); font-size: 17px; line-height: 1.45; }
+
+    .section { margin-top: 56px; scroll-margin-top: 24px; }
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 18px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .section-head h2 {
+      font-family: var(--serif);
+      font-size: 28px;
+      font-weight: 400;
+      line-height: 1;
+    }
+    .section-head span {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+    }
+    .note {
+      font-size: 13px;
+      color: var(--ink-3);
+      margin-bottom: 16px;
+      max-width: 60ch;
+    }
+
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .stack { display: flex; flex-direction: column; gap: 14px; }
+    .row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+    .demo {
+      background: var(--paper);
+      border: 1px solid var(--rule);
+      border-radius: var(--r-md);
+      padding: 20px;
+    }
+    .demo--flush { padding: 0; overflow: hidden; }
+    .demo-label {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+      margin-bottom: 12px;
+    }
+    .swatch-row { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 10px; }
+    .swatch {
+      border: 1px solid var(--rule);
+      border-radius: var(--r-sm);
+      overflow: hidden;
+      background: var(--paper);
+    }
+    .swatch i { display: block; height: 64px; }
+    .swatch b, .swatch small { display: block; padding: 8px 10px 0; font-size: 12px; }
+    .swatch small { padding-bottom: 10px; color: var(--ink-3); font-family: ui-monospace, monospace; font-size: 11px; }
+
+    /* —— components —— */
+    .btn {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 12px 18px;
+      border-radius: var(--r-sm);
+      font-weight: 800;
+      transition: background .2s ease, color .2s ease, border-color .2s ease, transform .1s ease;
+    }
+    .btn:active:not(:disabled) { transform: scale(0.99); }
+    .btn:disabled { background: var(--bone-soft) !important; color: var(--ink-4) !important; cursor: not-allowed; border-color: transparent !important; }
+    .btn:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+
+    .btn-editorial {
+      width: 100%;
+      min-height: 62px;
+      justify-content: space-between;
+      border-radius: 0;
+      background: var(--ink);
+      color: var(--bone);
+      padding: 18px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-editorial:hover:not(:disabled) { background: var(--blue); }
+    .btn-editorial .main-label { font-size: 16px; font-weight: 600; }
+    .btn-editorial .sub-label {
+      display: block;
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 12px;
+      font-weight: 400;
+      opacity: 0.7;
+      margin-top: 2px;
+    }
+    .btn-editorial .arrow {
+      width: 28px; height: 28px; border-radius: 50%;
+      border: 1px solid currentColor;
+      display: grid; place-items: center; flex-shrink: 0;
+    }
+
+    .btn-commerce {
+      min-height: 62px;
+      border-radius: var(--r-md);
+      background: var(--blue);
+      color: var(--bone);
+      padding: 16px 20px;
+      font-weight: 900;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 2px;
+    }
+    .btn-commerce small {
+      font-size: 13px;
+      font-weight: 700;
+      color: rgba(244, 241, 234, 0.76);
+    }
+    .btn-commerce:hover:not(:disabled) { background: var(--blue-press); }
+
+    .btn-partner {
+      min-height: 48px;
+      border-radius: 10px;
+      background: var(--blue);
+      color: var(--bone);
+      font-weight: 700;
+      padding: 0 20px;
+    }
+    .btn-partner:hover:not(:disabled) { background: var(--blue-press); }
+
+    .btn-secondary {
+      border: 1px solid var(--rule);
+      background: rgba(252, 250, 245, 0.72);
+      color: var(--ink);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-radius: var(--r-sm);
+    }
+    .btn-secondary.square { border-radius: 0; }
+    .btn-secondary:hover:not(:disabled) { border-color: var(--blue); color: var(--blue); }
+
+    .btn-text {
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      min-height: 44px;
+      padding: 10px 4px;
+    }
+    .btn-icon {
+      width: 44px; height: 44px;
+      border: 1px solid var(--rule);
+      background: var(--paper);
+      border-radius: var(--r-sm);
+      display: grid; place-items: center;
+      color: var(--ink);
+      flex-shrink: 0;
+    }
+    .btn-icon:hover:not(:disabled) { border-color: var(--blue); color: var(--blue); }
+    .btn-icon:disabled { color: var(--ink-4); cursor: not-allowed; }
+    .btn-icon.dense { width: 36px; height: 36px; }
+    .btn-icon.ghost { border-color: transparent; background: transparent; }
+    .btn-icon.square { border-radius: 0; }
+    .btn-icon svg,
+    .icon {
+      width: 20px;
+      height: 20px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .field { display: grid; gap: 7px; }
+    .field-label {
+      color: var(--ink-3);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+    .field-label.editorial {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: 0;
+      text-transform: none;
+    }
+    .field-control {
+      width: 100%;
+      min-height: 48px;
+      border: 1px solid var(--rule);
+      border-radius: var(--r-sm);
+      background: var(--bone);
+      padding: 12px 14px;
+      color: var(--ink);
+      outline: none;
+    }
+    .field-control:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(6, 8, 169, 0.14);
+      outline: none;
+    }
+    .field-control.error { border-color: var(--error); box-shadow: none; }
+    .field-error { color: var(--error); font-size: 12px; font-weight: 800; }
+    .field-ruled {
+      border: none;
+      border-radius: 0;
+      background: transparent;
+      border-bottom: 1px solid var(--rule);
+      padding: 14px 0;
+      min-height: auto;
+    }
+    .field-ruled:focus {
+      box-shadow: none;
+      border-bottom-color: var(--blue);
+    }
+    .field.ruled:focus-within .field-label { color: var(--blue); }
+
+    .segment {
+      display: inline-grid;
+      grid-auto-flow: column;
+      gap: 4px;
+      padding: 4px;
+      border: 1px solid var(--rule);
+      border-radius: var(--r-md);
+      background: var(--bone-soft);
+    }
+    .segment button {
+      min-height: 44px;
+      padding: 0 16px;
+      border-radius: var(--r-sm);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+    }
+    .segment button.on {
+      background: var(--paper);
+      color: var(--ink);
+      box-shadow: 0 2px 7px rgba(15, 15, 24, 0.09);
+    }
+    .segment.blue button.on {
+      background: var(--blue);
+      color: var(--bone);
+      box-shadow: none;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 8px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .tabs button {
+      min-height: 42px;
+      padding: 12px 18px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+      border-bottom: 2px solid transparent;
+    }
+    .tabs button:hover,
+    .tabs button.on {
+      background: var(--blue);
+      color: var(--bone);
+      border-bottom-color: var(--blue);
+    }
+
+    .topbar {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 20px;
+      padding: 12px 24px;
+      background: rgba(244, 241, 234, 0.96);
+      border-bottom: 1px solid rgba(15, 15, 24, 0.08);
+      box-shadow: 0 5px 14px rgba(15, 15, 24, 0.04);
+      position: relative;
+    }
+    .topbar::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto;
+      height: 2px;
+      background: linear-gradient(90deg, #B5431F, var(--gold), #1E6FB8);
+    }
+    .topbar .brand { font-weight: 800; font-size: 15px; }
+    .topbar .brand em { font-family: var(--serif); font-style: italic; color: var(--blue); font-weight: 400; }
+    .topbar nav { display: flex; gap: 20px; justify-content: center; }
+    .topbar nav a {
+      color: var(--ink-2);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      position: relative;
+    }
+    .topbar nav a:hover,
+    .topbar nav a[aria-current="page"] { color: var(--blue); }
+    .topbar nav a[aria-current="page"]::after {
+      content: "";
+      position: absolute;
+      left: 0; right: 0; bottom: 8px;
+      height: 2px;
+      background: var(--blue);
+      border-radius: 2px;
+    }
+    .topbar .actions { display: flex; gap: 10px; justify-content: flex-end; align-items: center; }
+
+    .shell-demo {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      border: 1px solid var(--rule);
+      border-radius: var(--r-md);
+      overflow: hidden;
+      min-height: 280px;
+      background: var(--bone);
+    }
+    .side {
+      background: var(--paper);
+      border-right: 1px solid var(--rule);
+      padding: 18px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .side .side-brand {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      padding: 0 10px 14px;
+      font-weight: 800;
+    }
+    .side .side-brand em { font-family: var(--serif); font-style: italic; color: var(--blue); font-weight: 400; }
+    .side button {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+      min-height: 44px;
+      padding: 0 12px;
+      border-radius: var(--r-sm);
+      text-align: left;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--ink);
+    }
+    .side button.on {
+      background: rgba(6, 8, 169, 0.07);
+      color: var(--blue);
+      font-weight: 700;
+    }
+    .side .btn-partner,
+    .side .btn-partner:hover:not(:disabled) {
+      justify-content: center;
+      color: var(--bone);
+      font-weight: 700;
+    }
+    .side .side-foot {
+      margin-top: auto;
+      border: 1px solid var(--rule);
+      border-radius: var(--r-md);
+      padding: 12px;
+      background: var(--bone);
+    }
+    .side .side-foot b { display: block; font-size: 13px; margin-bottom: 8px; }
+    .shell-main { padding: 18px; position: relative; }
+    .bottom-bar {
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      background: var(--paper);
+      border-top: 1px solid var(--rule);
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      box-shadow: 0 -6px 24px rgba(15, 15, 24, 0.08);
+    }
+    .bottom-bar .eye {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+    }
+    .bottom-bar .title { font-size: 15px; font-weight: 700; }
+
+    .masthead {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 8px 0 4px;
+    }
+    .mast-logos { display: flex; align-items: center; gap: 10px; }
+    .mast-mark {
+      width: 36px; height: 40px;
+      background: var(--ink);
+      color: var(--bone);
+      display: grid; place-items: center;
+      font-size: 11px; font-weight: 900;
+    }
+    .mast-mark.alt { background: var(--blue); }
+    .mast-x { color: var(--ink-3); font-weight: 700; }
+    .mast-text .name { font-size: 14px; font-weight: 800; }
+    .mast-text .ed { font-size: 11px; color: var(--ink-3); }
+
+    .card {
+      background: var(--paper);
+      border: 1px solid var(--rule);
+      border-radius: var(--r-md);
+      padding: 18px;
+      box-shadow: var(--shadow-card);
+    }
+    .card.editorial {
+      border-radius: 0;
+      background: var(--bone);
+      box-shadow: none;
+    }
+    .card.auth { border-top: 3px solid var(--blue); }
+    .card h3 { font-family: var(--serif); font-size: 22px; font-weight: 400; line-height: 1.05; margin: 6px 0 8px; }
+    .card p { color: var(--ink-3); font-size: 14px; }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      min-height: 24px;
+      padding: 4px 10px;
+      border: 1px solid var(--rule);
+      border-radius: var(--r-pill);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+    }
+    .badge.paid {
+      border-color: rgba(6, 8, 169, 0.32);
+      color: var(--blue);
+    }
+
+    .alert {
+      border: 1px solid var(--rule);
+      background: rgba(235, 231, 222, 0.66);
+      padding: 13px 15px;
+      border-radius: var(--r-md);
+      color: var(--blue);
+      font-weight: 700;
+      font-size: 14px;
+    }
+    .alert.error {
+      border-color: rgba(176, 32, 46, 0.32);
+      background: rgba(176, 32, 46, 0.07);
+      color: var(--error-text);
+    }
+    .alert.error .t {
+      display: block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--error);
+      margin-bottom: 4px;
+    }
+
+    .toast {
+      background: var(--ink);
+      color: var(--bone);
+      border: 1px solid rgba(6, 8, 169, 0.35);
+      padding: 16px;
+      box-shadow: 0 20px 48px rgba(15, 15, 24, 0.28);
+      max-width: 340px;
+    }
+    .toast .t {
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #EAFF18;
+      margin-bottom: 6px;
+    }
+    .toast .t.err { color: #FFB8C2; }
+    .toast p { font-size: 14px; font-weight: 700; line-height: 1.35; }
+
+    .modal-demo {
+      background: rgba(15, 15, 24, 0.58);
+      border-radius: var(--r-md);
+      padding: 28px 20px;
+      display: grid;
+      place-items: center;
+      min-height: 260px;
+    }
+    .modal {
+      width: min(100%, 380px);
+      background: var(--paper);
+      border: 1px solid var(--rule);
+      border-radius: var(--r-lg);
+      padding: 20px;
+      box-shadow: var(--shadow-modal);
+    }
+    .modal.square { border-radius: 0; }
+    .modal h3 { font-family: var(--serif); font-size: 28px; font-weight: 400; line-height: 1; margin-bottom: 10px; }
+    .modal p { color: var(--ink-2); font-size: 14px; margin-bottom: 16px; }
+    .modal .actions { display: flex; gap: 10px; justify-content: flex-end; }
+
+    .dialog {
+      display: flex;
+      flex-direction: column;
+      width: min(100%, 440px);
+      background: var(--paper);
+      border: 1px solid var(--rule);
+      border-radius: var(--r-lg);
+      box-shadow: var(--shadow-modal);
+      overflow: hidden;
+    }
+    .dialog.square { border-radius: 0; }
+    .dialog-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 16px 18px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .dialog-header h3 {
+      margin: 0;
+      font-family: var(--serif);
+      font-size: 26px;
+      font-weight: 400;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+    .dialog-body {
+      padding: 18px;
+      color: var(--ink-2);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .dialog-footer {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      padding: 14px 18px;
+      border-top: 1px solid var(--rule);
+    }
+
+    .switch {
+      position: relative;
+      width: 44px;
+      height: 26px;
+      border: 0;
+      border-radius: var(--r-pill);
+      background: var(--bone-deep);
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: background 0.18s var(--ease);
+    }
+    .switch::after {
+      content: "";
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--paper);
+      box-shadow: 0 1px 3px rgba(15, 15, 24, 0.18);
+      transition: transform 0.18s var(--ease);
+    }
+    .switch[aria-checked="true"] { background: var(--blue); }
+    .switch[aria-checked="true"]::after { transform: translateX(18px); }
+    .switch-row {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .drawer-demo {
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      min-height: 240px;
+      border: 1px solid var(--rule);
+      border-radius: var(--r-md);
+      overflow: hidden;
+    }
+    .drawer-scrim { background: rgba(15, 15, 24, 0.35); }
+    .drawer {
+      background: var(--paper);
+      border-left: 1px solid var(--rule);
+      padding: 18px;
+      box-shadow: -22px 0 70px rgba(15, 15, 24, 0.22);
+    }
+    .drawer h3 { font-family: var(--serif); font-size: 24px; font-weight: 400; margin-bottom: 8px; }
+
+    .table-wrap { overflow: auto; border: 1px solid var(--rule); border-radius: var(--r-md); background: var(--paper); }
+    table { width: 100%; border-collapse: collapse; }
+    th {
+      text-align: left;
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--rule);
+      background: var(--bone);
+    }
+    td {
+      padding: 14px;
+      border-bottom: 1px solid var(--rule-soft);
+      font-size: 14px;
+      vertical-align: middle;
+    }
+    tr:last-child td { border-bottom: none; }
+
+    .deflist { border-top: 1px solid var(--rule); }
+    .deflist div {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .deflist dt {
+      font-family: var(--serif);
+      font-style: italic;
+      color: var(--ink-3);
+      font-size: 14px;
+    }
+    .deflist dd { font-weight: 600; }
+
+    .qr {
+      width: 140px;
+      background: #fff;
+      border: 1px solid var(--rule);
+      border-radius: var(--r-md);
+      padding: 10px;
+    }
+    .qr-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 3px;
+      aspect-ratio: 1;
+    }
+    .qr-grid i { background: var(--ink); aspect-ratio: 1; }
+    .qr-grid i.off { background: transparent; }
+
+    .rail {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      padding: 8px 0;
+    }
+    .rail .dot {
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      border: 2px solid var(--rule);
+      background: var(--paper);
+      z-index: 1;
+    }
+    .rail .dot.done { background: var(--blue); border-color: var(--blue); }
+    .rail .dot.active { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(6, 8, 169, 0.16); }
+    .rail .seg {
+      flex: 1;
+      height: 3px;
+      background: var(--rule-soft);
+    }
+    .rail .seg.done { background: var(--blue); }
+
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    .section-label i {
+      width: 24px; height: 1px; background: var(--ink); display: block;
+    }
+    .section-label .num {
+      font-family: var(--serif);
+      font-style: italic;
+      color: var(--blue);
+      font-size: 14px;
+    }
+    .section-label .lab {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+    }
+
+    .task {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .task .num {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      border: 1px solid var(--rule);
+      display: grid; place-items: center;
+      font-size: 12px; font-weight: 700;
+      color: var(--ink-3);
+    }
+    .task.done .num {
+      background: var(--blue);
+      border-color: var(--blue);
+      color: var(--bone);
+    }
+    .task .meta { color: var(--ink-3); font-size: 13px; }
+    .task .chev {
+      margin-left: auto;
+      color: var(--ink-3);
+      display: inline-grid;
+      place-items: center;
+    }
+    .task .chev svg { width: 18px; height: 18px; }
+
+    .empty {
+      border: 1px dashed var(--rule);
+      background: var(--bone);
+      padding: 22px;
+      text-align: center;
+    }
+    .empty b { display: block; margin-bottom: 4px; }
+    .empty span { color: var(--ink-3); font-size: 13px; }
+
+    /* —— File attachment (custom UI; native input hidden) —— */
+    .file-attach { position: relative; }
+    .file-attach__input {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+    .upload {
+      display: block;
+      border: 1.5px dashed var(--rule);
+      border-radius: var(--r-md);
+      background: var(--bone);
+      padding: 22px 18px;
+      text-align: center;
+      cursor: pointer;
+      transition: border-color .15s ease, background .15s ease, color .15s ease;
+    }
+    .upload:hover,
+    .upload.drag,
+    .file-attach:focus-within .upload:not(.has-error) {
+      border-color: var(--blue);
+      background: rgba(6, 8, 169, 0.04);
+    }
+    .upload.has-error {
+      border-color: var(--error);
+      background: rgba(176, 32, 46, 0.05);
+    }
+    .upload .up-ico {
+      display: inline-grid;
+      place-items: center;
+      width: 44px;
+      height: 44px;
+      margin: 0 auto 10px;
+      border-radius: var(--r-sm);
+      border: 1px solid var(--rule);
+      background: var(--paper);
+      color: var(--ink-3);
+    }
+    .upload:hover .up-ico,
+    .upload.drag .up-ico { color: var(--blue); border-color: var(--blue); }
+    .upload .up-ico svg { width: 22px; height: 22px; }
+    .upload b { display: block; margin-bottom: 4px; font-size: 15px; }
+    .upload .hint { display: block; color: var(--ink-3); font-size: 13px; margin-bottom: 14px; }
+    .upload.has-error .hint { color: var(--error-text); }
+    .upload .btn { pointer-events: none; }
+    .file-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 14px;
+      border: 1px solid var(--rule);
+      border-radius: var(--r-sm);
+      background: var(--paper);
+      text-align: left;
+    }
+    .file-row.has-error { border-color: var(--error); }
+    .file-row .ico {
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      background: rgba(6, 8, 169, 0.08);
+      color: var(--blue);
+      display: grid; place-items: center;
+      font-size: 11px; font-weight: 800;
+      letter-spacing: 0.04em;
+      flex-shrink: 0;
+    }
+    .file-row .ico svg { width: 18px; height: 18px; }
+    .file-row .name { font-weight: 700; font-size: 14px; }
+    .file-row .meta { font-size: 12px; color: var(--ink-3); }
+    .file-row.has-error .meta { color: var(--error-text); }
+    .file-row .rm { margin-left: auto; }
+    .file-progress {
+      margin-top: 10px;
+      height: 6px;
+      border-radius: var(--r-pill);
+      background: var(--bone-soft);
+      overflow: hidden;
+    }
+    .file-progress > i {
+      display: block;
+      height: 100%;
+      width: 62%;
+      background: var(--blue);
+      border-radius: inherit;
+    }
+    .file-compact {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .file-compact .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .avatar {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: var(--bone-soft);
+      color: var(--blue);
+      display: grid; place-items: center;
+      font-weight: 800;
+      font-size: 13px;
+      border: 1px solid var(--rule);
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .avatar.lg { width: 56px; height: 56px; font-size: 18px; }
+    .avatar.sm { width: 32px; height: 32px; font-size: 11px; }
+    .avatar.blue { background: rgba(6, 8, 169, 0.1); border-color: transparent; }
+    .avatar-row { display: flex; align-items: center; gap: 12px; }
+    .avatar-row b { display: block; font-size: 14px; }
+    .avatar-row span { font-size: 13px; color: var(--ink-3); }
+
+    .search {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    .search .ico {
+      position: absolute;
+      left: 14px;
+      color: var(--ink-3);
+      font-size: 14px;
+      pointer-events: none;
+    }
+    .search input {
+      width: 100%;
+      min-height: 48px;
+      padding: 12px 40px 12px 40px;
+      border: 1px solid var(--rule);
+      border-radius: var(--r-sm);
+      background: var(--bone);
+      outline: none;
+    }
+    .search input::-webkit-search-decoration,
+    .search input::-webkit-search-cancel-button,
+    .search input::-webkit-search-results-button,
+    .search input::-webkit-search-results-decoration {
+      -webkit-appearance: none;
+      appearance: none;
+      display: none;
+    }
+    .search input:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(6, 8, 169, 0.14);
+    }
+    .search .clear {
+      position: absolute;
+      right: 8px;
+      width: 32px; height: 32px;
+      border-radius: 8px;
+      color: var(--ink-3);
+      display: grid;
+      place-items: center;
+    }
+    .search .clear svg { width: 16px; height: 16px; }
+    .search .clear:hover { color: var(--ink); background: var(--bone-soft); }
+
+    .stepper {
+      display: inline-grid;
+      grid-template-columns: 36px 40px 36px;
+      align-items: stretch;
+    }
+    .stepper button {
+      min-height: 36px;
+      background: var(--bone);
+      border: 1px solid var(--rule);
+      font-weight: 900;
+      font-size: 16px;
+    }
+    .stepper button:first-child { border-radius: var(--r-sm) 0 0 var(--r-sm); }
+    .stepper button:last-child { border-radius: 0 var(--r-sm) var(--r-sm) 0; }
+    .stepper button:hover:not(:disabled) { color: var(--blue); border-color: var(--blue); }
+    .stepper button:disabled { color: var(--ink-4); cursor: not-allowed; }
+    .stepper .val {
+      display: grid; place-items: center;
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      font-weight: 700;
+      background: var(--paper);
+    }
+
+    .pagination {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 0;
+    }
+    .pagination .meta { font-size: 13px; color: var(--ink-3); }
+    .pagination .controls { display: flex; align-items: center; gap: 8px; }
+    .pagination select {
+      min-height: 40px;
+      border: 1px solid var(--rule);
+      background: var(--bone);
+      padding: 0 10px;
+      font-weight: 600;
+    }
+
+    .menu-wrap { position: relative; display: inline-block; }
+    .menu {
+      position: absolute;
+      right: 0; top: calc(100% + 6px);
+      min-width: 180px;
+      background: var(--paper);
+      border: 1px solid var(--rule);
+      border-radius: var(--r-sm);
+      box-shadow: var(--shadow-card);
+      padding: 6px;
+      z-index: 5;
+    }
+    .menu button {
+      display: block;
+      width: 100%;
+      text-align: left;
+      min-height: 44px;
+      padding: 0 12px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .menu button:hover, .menu button:focus-visible {
+      background: rgba(6, 8, 169, 0.07);
+      color: var(--blue);
+      outline: none;
+    }
+    .menu button.danger { color: var(--error); }
+    .menu button.danger:hover { background: rgba(176, 32, 46, 0.08); color: var(--error); }
+    .menu hr { border: none; border-top: 1px solid var(--rule-soft); margin: 6px 0; }
+
+    .tip-wrap { position: relative; display: inline-flex; }
+    .tip {
+      position: absolute;
+      left: 50%; bottom: calc(100% + 10px);
+      transform: translateX(-50%);
+      background: var(--ink);
+      color: var(--bone);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 8px 10px;
+      border-radius: 8px;
+      white-space: nowrap;
+      box-shadow: var(--shadow-card);
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity .15s ease;
+    }
+    .tip-wrap:hover .tip, .tip-wrap:focus-within .tip { opacity: 1; }
+    .tip::after {
+      content: "";
+      position: absolute;
+      left: 50%; top: 100%;
+      transform: translateX(-50%);
+      border: 6px solid transparent;
+      border-top-color: var(--ink);
+    }
+
+    .spinner {
+      width: 22px; height: 22px;
+      border: 2px solid var(--rule);
+      border-top-color: var(--blue);
+      border-radius: 50%;
+      animation: spin .8s linear infinite;
+      display: inline-block;
+    }
+    .spinner.lg { width: 36px; height: 36px; border-width: 3px; }
+    .spinner.on-dark { border-color: rgba(244,241,234,.25); border-top-color: var(--bone); }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .skeleton {
+      background: linear-gradient(90deg, var(--bone-soft), var(--bone-deep), var(--bone-soft));
+      background-size: 200% 100%;
+      animation: shimmer 1.4s ease-in-out infinite;
+      border-radius: 8px;
+    }
+    .skeleton.line { height: 12px; margin-bottom: 10px; }
+    .skeleton.line.short { width: 55%; }
+    .skeleton.avatar { width: 40px; height: 40px; border-radius: 50%; }
+    .skeleton.block { height: 88px; border-radius: var(--r-md); }
+    @keyframes shimmer {
+      0% { background-position: 100% 0; }
+      100% { background-position: -100% 0; }
+    }
+
+    .accordion { border: 1px solid var(--rule); border-radius: var(--r-md); overflow: hidden; background: var(--paper); }
+    .acc-item + .acc-item { border-top: 1px solid var(--rule); }
+    .acc-head {
+      width: 100%;
+      min-height: 52px;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      font-weight: 700;
+      text-align: left;
+    }
+    .acc-head:hover { color: var(--blue); }
+    .acc-head .chev {
+      display: inline-grid;
+      place-items: center;
+      color: var(--ink-3);
+      transition: transform .2s ease, color .2s ease;
+      flex-shrink: 0;
+    }
+    .acc-head .chev svg { width: 20px; height: 20px; }
+    .acc-item.open .acc-head .chev { transform: rotate(180deg); color: var(--blue); }
+    .acc-body {
+      display: none;
+      padding: 0 16px 16px;
+      color: var(--ink-2);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .acc-item.open .acc-body { display: block; }
+
+    .crumbs {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .crumbs a { color: var(--ink-3); text-decoration: none; }
+    .crumbs a:hover { color: var(--blue); }
+    .crumbs .sep { color: var(--ink-4); }
+    .crumbs .cur { color: var(--ink); }
+
+    .datepicker {
+      width: min(100%, 280px);
+      background: var(--paper);
+      border: 1px solid var(--rule);
+      border-radius: var(--r-md);
+      padding: 14px;
+      box-shadow: var(--shadow-card);
+    }
+    .dp-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      font-weight: 800;
+    }
+    .dp-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 4px;
+      text-align: center;
+    }
+    .dp-grid .dow {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+      padding: 6px 0;
+    }
+    .dp-grid button {
+      aspect-ratio: 1;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--ink);
+    }
+    .dp-grid button:hover { background: var(--bone-soft); }
+    .dp-grid button.today { box-shadow: inset 0 0 0 1.5px var(--blue); }
+    .dp-grid button.on { background: var(--blue); color: var(--bone); }
+    .dp-grid button.mute { color: var(--ink-4); }
+
+    .bell-wrap { position: relative; display: inline-flex; }
+    .bell-btn {
+      width: 44px; height: 44px;
+      border: 1px solid var(--rule);
+      border-radius: var(--r-sm);
+      background: var(--paper);
+      display: grid; place-items: center;
+      font-size: 18px;
+    }
+    .bell-btn:hover { border-color: var(--blue); color: var(--blue); }
+    .bell-count {
+      position: absolute;
+      top: -4px; right: -4px;
+      min-width: 18px; height: 18px;
+      padding: 0 5px;
+      border-radius: var(--r-pill);
+      background: var(--blue);
+      color: var(--bone);
+      font-size: 10px;
+      font-weight: 900;
+      display: grid; place-items: center;
+    }
+    .bell-panel {
+      position: absolute;
+      right: 0; top: calc(100% + 8px);
+      width: 280px;
+      background: var(--paper);
+      border: 1px solid var(--rule);
+      border-radius: var(--r-md);
+      box-shadow: var(--shadow-card);
+      overflow: hidden;
+      z-index: 6;
+    }
+    .bell-panel .ph {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--rule);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+    }
+    .bell-item {
+      display: block;
+      width: 100%;
+      text-align: left;
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--rule-soft);
+    }
+    .bell-item:hover { background: rgba(6, 8, 169, 0.05); }
+    .bell-item.unread { background: rgba(6, 8, 169, 0.06); }
+    .bell-item b { display: block; font-size: 13px; margin-bottom: 2px; }
+    .bell-item span { font-size: 12px; color: var(--ink-3); }
+
+    .chat-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      width: 100%;
+      padding: 14px;
+      border: 1px solid var(--rule);
+      border-radius: var(--r-md);
+      background: var(--paper);
+      text-align: left;
+    }
+    .chat-row:hover { border-color: var(--blue); }
+    .chat-tile {
+      width: 42px; height: 42px;
+      border-radius: 12px;
+      background: #1373a2;
+      color: #fff;
+      display: grid; place-items: center;
+      font-weight: 800;
+      font-size: 12px;
+      flex-shrink: 0;
+    }
+    .chat-row b { display: block; font-size: 15px; font-weight: 700; }
+    .chat-row em { display: block; font-style: normal; font-size: 13px; color: var(--ink-3); margin-top: 2px; }
+    .chat-row .go { margin-left: auto; color: var(--ink-3); font-weight: 700; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .spinner, .skeleton { animation: none !important; }
+    }
+
+    .admin-hero {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 20px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--ink);
+      margin-bottom: 16px;
+    }
+    .admin-hero .kicker {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+      margin-bottom: 8px;
+    }
+    .admin-hero h3 {
+      font-family: var(--serif);
+      font-size: clamp(36px, 5vw, 52px);
+      font-weight: 400;
+      line-height: 0.95;
+    }
+    .admin-summary {
+      border: 1px solid var(--rule);
+      padding: 14px 16px;
+      text-align: right;
+      min-width: 120px;
+      color: var(--ink-3);
+      font-size: 12px;
+    }
+    .admin-summary strong {
+      display: block;
+      font-family: var(--serif);
+      font-size: 36px;
+      font-weight: 400;
+      color: var(--blue);
+      line-height: 1;
+    }
+
+    .type-sample { margin-bottom: 18px; }
+    .type-sample .display {
+      font-family: var(--serif);
+      font-size: clamp(36px, 5vw, 56px);
+      line-height: 0.95;
+      letter-spacing: -0.025em;
+    }
+    .type-sample .display em { color: var(--blue); font-style: italic; }
+    .type-sample .ui { font-size: 16px; color: var(--ink-2); margin-top: 8px; }
+    .type-meta { font-size: 12px; color: var(--ink-3); margin-top: 4px; }
+
+    .dialect-pills { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
+    .dialect-pills span {
+      border: 1px solid var(--rule);
+      border-radius: var(--r-pill);
+      padding: 6px 12px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+    }
+
+    @media (max-width: 900px) {
+      .frame { grid-template-columns: 1fr; }
+      .nav {
+        position: relative;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--rule);
+      }
+      .nav .links { display: flex; flex-wrap: wrap; gap: 4px; }
+      .nav .group { width: 100%; }
+      .main { padding: 28px 18px 80px; }
+      .grid-2, .grid-3, .shell-demo, .drawer-demo { grid-template-columns: 1fr; }
+      .topbar { grid-template-columns: 1fr; }
+      .topbar nav, .topbar .actions { justify-content: flex-start; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; animation: none !important; }
+    }    /* —— UI Library (generated by gutguard-ui/scripts/export-obsidian-showcase.mjs) —— */
+    .uil-intro { margin-top: 72px; padding-top: 28px; border-top: 1px solid var(--rule); }
+    .uil-intro h2 { font-family: var(--serif); font-weight: 400; font-size: 34px; letter-spacing: -0.01em; margin: 6px 0 10px; }
+    .uil-intro h2 em { color: var(--blue); }
+    .uil-meta { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0 14px; }
+    .uil-meta span { font: 500 12px/1 ui-monospace, "IBM Plex Mono", monospace; background: var(--paper); border: 1px solid var(--rule); border-radius: 6px; padding: 4px 7px; }
+    .uil-shots { display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-start; }
+    .uil-shot { margin: 0; min-width: 0; }
+    .uil-phone { flex: 0 1 300px; }
+    .uil-desk { flex: 1 1 380px; }
+    .uil-shot figcaption { display: flex; justify-content: space-between; gap: 8px; font: 11px/1.4 ui-monospace, "IBM Plex Mono", monospace; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 6px; }
+    .uil-shot figcaption a { text-transform: none; letter-spacing: 0; }
+    .uil-frame { max-height: 640px; overflow: auto; border: 1px solid var(--rule); border-radius: var(--r-sm); background: var(--bone); }
+    .uil-frame img { display: block; width: 100%; height: auto; }
+    .uil-code { margin-top: 10px; font-size: 12px; color: var(--ink-3); }
+    .uil-code code { color: var(--ink); }
+  </style>
+</head>
+<body>
+  <div class="frame">
+    <aside class="nav">
+      <div class="nav-brand"><strong>GutGuard</strong><em>DS</em></div>
+      <p class="nav-sub">Visual showcase · Doctors look · open in a browser</p>
+      <div class="group">Foundations</div>
+      <div class="links">
+        <a href="#foundations">Color &amp; type</a>
+      </div>
+      <div class="group">Actions</div>
+      <div class="links">
+        <a href="#buttons">Buttons</a>
+        <a href="#icon-button">Icon button</a>
+        <a href="#fields">Form fields</a>
+        <a href="#segment">Segmented</a>
+        <a href="#switch">Switch</a>
+        <a href="#tabs">Tabs</a>
+      </div>
+      <div class="group">Shell</div>
+      <div class="links">
+        <a href="#topbar">Top bar</a>
+        <a href="#sidebar">Sidebar + bottom bar</a>
+        <a href="#masthead">Masthead</a>
+        <a href="#admin">Admin shell</a>
+      </div>
+      <div class="group">Surfaces</div>
+      <div class="links">
+        <a href="#cards">Cards</a>
+        <a href="#feedback">Badge · Alert · Toast</a>
+        <a href="#dialog">Dialog</a>
+        <a href="#modal">Modal · Drawer</a>
+      </div>
+      <div class="group">Data</div>
+      <div class="links">
+        <a href="#table">Table</a>
+        <a href="#deflist">Definition list</a>
+        <a href="#qr">QR · Progress · Tasks</a>
+        <a href="#empty">Empty state</a>
+      </div>
+      <div class="group">Utilities</div>
+      <div class="links">
+        <a href="#file">File attachment</a>
+        <a href="#avatar">Avatar</a>
+        <a href="#search">Search</a>
+        <a href="#stepper">Quantity stepper</a>
+        <a href="#pagination">Pagination</a>
+        <a href="#dropdown">Dropdown menu</a>
+        <a href="#tooltip">Tooltip</a>
+        <a href="#spinner">Spinner · Skeleton</a>
+      </div>
+      <div class="group">Extended</div>
+      <div class="links">
+        <a href="#accordion">Accordion</a>
+        <a href="#breadcrumbs">Breadcrumbs</a>
+        <a href="#datepicker">Date picker</a>
+        <a href="#notify">Notification bell</a>
+        <a href="#chatrow">Chat link row</a>
+      </div>
+      <!-- GG-UI-NAV:START -->
+      <div class="group">UI Library · Primitives</div>
+      <div class="links">
+        <a href="#uil-button">Button</a>
+        <a href="#uil-icon-button">IconButton</a>
+        <a href="#uil-badge">Badge</a>
+        <a href="#uil-eyebrow">Eyebrow</a>
+        <a href="#uil-price">Price</a>
+        <a href="#uil-avatar">Avatar</a>
+        <a href="#uil-points-pill">PointsPill</a>
+        <a href="#uil-progress-bar">ProgressBar</a>
+        <a href="#uil-stepper">Stepper</a>
+        <a href="#uil-text-field">TextField</a>
+        <a href="#uil-checkbox">Checkbox</a>
+        <a href="#uil-code-input">CodeInput</a>
+      </div>
+      <div class="group">UI Library · Components</div>
+      <div class="links">
+        <a href="#uil-segmented-control">SegmentedControl</a>
+        <a href="#uil-combobox">Combobox</a>
+        <a href="#uil-tabs">Tabs</a>
+        <a href="#uil-option-card">OptionCard</a>
+        <a href="#uil-choice-chip">ChoiceChip</a>
+        <a href="#uil-stat-group">StatGroup</a>
+        <a href="#uil-trust-line">TrustLine</a>
+        <a href="#uil-note">Note</a>
+        <a href="#uil-line-item">LineItem</a>
+        <a href="#uil-order-totals">OrderTotals</a>
+        <a href="#uil-card">Card</a>
+        <a href="#uil-quote">Quote</a>
+        <a href="#uil-section-heading">SectionHeading</a>
+        <a href="#uil-timeline">Timeline</a>
+        <a href="#uil-list-row">ListRow</a>
+        <a href="#uil-icon-row">IconRow</a>
+      </div>
+      <div class="group">UI Library · Shell</div>
+      <div class="links">
+        <a href="#uil-top-bar">TopBar</a>
+        <a href="#uil-footer">Footer</a>
+        <a href="#uil-bottom-bar">BottomBar</a>
+      </div>
+      <div class="group">UI Library · Overlays & states</div>
+      <div class="links">
+        <a href="#uil-empty-state">EmptyState</a>
+        <a href="#uil-success-state">SuccessState</a>
+        <a href="#uil-sheet">Sheet</a>
+        <a href="#uil-mobile-menu">MobileMenu</a>
+      </div>
+      <div class="group">UI Library · Patterns</div>
+      <div class="links">
+        <a href="#uil-nutrition-facts">NutritionFacts</a>
+        <a href="#uil-product-header">ProductHeader</a>
+        <a href="#uil-person-row">PersonRow</a>
+        <a href="#uil-member-card">MemberCard</a>
+        <a href="#uil-dose-row">DoseRow</a>
+        <a href="#uil-offer-card">OfferCard</a>
+        <a href="#uil-adherence-calendar">AdherenceCalendar</a>
+        <a href="#uil-step-progress">StepProgress</a>
+      </div>
+      <div class="group">UI Library · Sections</div>
+      <div class="links">
+        <a href="#uil-hero">Hero</a>
+        <a href="#uil-blood-scan-readout">BloodScanReadout</a>
+        <a href="#uil-miage-block">MiAgeBlock</a>
+        <a href="#uil-trajectory-chart">TrajectoryChart</a>
+        <a href="#uil-story-of-hope">StoryOfHope</a>
+        <a href="#uil-protocol-steps">ProtocolSteps</a>
+        <a href="#uil-member-greeting">MemberGreeting</a>
+        <a href="#uil-business-tools">BusinessTools</a>
+        <a href="#uil-protocol-journey">ProtocolJourney</a>
+        <a href="#uil-auth-panel">AuthPanel</a>
+      </div>
+      <div class="group">UI Library · Screens</div>
+      <div class="links">
+        <a href="#uil-home-screen">Website: Home</a>
+        <a href="#uil-shop-screen">Shop: choose a pack</a>
+        <a href="#uil-checkout-screen">Checkout and Done</a>
+        <a href="#uil-lifestyle-screen">Lifestyle: My Health</a>
+        <a href="#uil-lifestyle-story-screen">Lifestyle: My Story</a>
+        <a href="#uil-lifestyle-team-screen">Lifestyle: My Team</a>
+        <a href="#uil-lifestyle-sheets-screen">Lifestyle: sheets</a>
+        <a href="#uil-landing-screen">Lifestyle landing: free card</a>
+        <a href="#uil-signup-flow-screen">Lifestyle sign-up flow</a>
+      </div>
+      <!-- GG-UI-NAV:END -->
+    </aside>
+
+    <main class="main">
+      <header class="hero">
+        <div class="eyebrow">GutGuard Design System</div>
+        <h1>Visual <em>component</em> showcase</h1>
+        <p>Every skin below follows GutGuard Doctors: bone canvas, ultramarine actions, Fraunces + Inter Tight. Prototypes supply structure only — this is how components should look.</p>
+        <div class="dialect-pills">
+          <span>Editorial · square</span>
+          <span>Commerce · soft radius</span>
+          <span>Admin · dense square</span>
+        </div>
+      </header>
+
+      <!-- Foundations -->
+      <section class="section" id="foundations">
+        <div class="section-head"><h2>Foundations</h2><span>Tokens</span></div>
+        <p class="note">Recognition cues shared by every product.</p>
+        <div class="swatch-row">
+          <div class="swatch"><i style="background:#F4F1EA"></i><b>Bone</b><small>#F4F1EA</small></div>
+          <div class="swatch"><i style="background:#FCFAF5;border-bottom:1px solid #D8D2C2"></i><b>Paper</b><small>#FCFAF5</small></div>
+          <div class="swatch"><i style="background:#0608A9"></i><b>Blue</b><small>#0608A9</small></div>
+          <div class="swatch"><i style="background:#0F0F18"></i><b>Ink</b><small>#0F0F18</small></div>
+          <div class="swatch"><i style="background:#B08D5B"></i><b>Gold</b><small>#B08D5B</small></div>
+          <div class="swatch"><i style="background:#D8D2C2"></i><b>Rule</b><small>#D8D2C2</small></div>
+          <div class="swatch"><i style="background:#B0202E"></i><b>Error</b><small>#B0202E</small></div>
+          <div class="swatch"><i style="background:#EBE7DE"></i><b>Bone soft</b><small>#EBE7DE</small></div>
+        </div>
+        <div class="demo" style="margin-top:16px">
+          <div class="type-sample">
+            <div class="display">Clinical meets <em>editorial</em></div>
+            <div class="ui">Inter Tight body — 16px / 1.5 for interface reading and controls.</div>
+            <div class="type-meta">Fraunces 400 display · Inter Tight UI · gold focus rings</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Buttons -->
+      <section class="section" id="buttons">
+        <div class="section-head"><h2>Buttons</h2><span>Actions</span></div>
+        <div class="grid-2">
+          <div class="demo">
+            <div class="demo-label">Editorial primary</div>
+            <button class="btn btn-editorial">
+              <span><span class="main-label">Continue registration</span><span class="sub-label">Takes about two minutes</span></span>
+              <span class="arrow" aria-hidden="true">→</span>
+            </button>
+          </div>
+          <div class="demo">
+            <div class="demo-label">Commerce primary</div>
+            <button class="btn btn-commerce" style="width:100%">
+              Place order
+              <small>Ships in 2–3 business days</small>
+            </button>
+          </div>
+          <div class="demo">
+            <div class="demo-label">Partner · secondary · text · icon</div>
+            <div class="row">
+              <button class="btn btn-partner">Sign in</button>
+              <button class="btn btn-secondary">Learn more</button>
+              <button class="btn btn-text">Resend code</button>
+              <button class="btn btn-icon" aria-label="Close"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
+              <button class="btn btn-partner" disabled>Disabled</button>
+            </div>
+          </div>
+          <div class="demo">
+            <div class="demo-label">Focus: Tab onto a control — gold ring</div>
+            <button class="btn btn-secondary square">Admin square</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Icon button -->
+      <section class="section" id="icon-button">
+        <div class="section-head"><h2>Icon button</h2><span>Lucide-style SVG</span></div>
+        <div class="demo">
+          <div class="demo-label">Close · chevrons · overflow · dense · ghost · disabled</div>
+          <div class="row">
+            <button class="btn btn-icon" type="button" aria-label="Close"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
+            <button class="btn btn-icon" type="button" aria-label="Expand"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+            <button class="btn btn-icon" type="button" aria-label="Previous"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button>
+            <button class="btn btn-icon" type="button" aria-label="Next"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
+            <button class="btn btn-icon" type="button" aria-label="More actions"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="1" fill="currentColor" stroke="none"/><circle cx="19" cy="12" r="1" fill="currentColor" stroke="none"/><circle cx="5" cy="12" r="1" fill="currentColor" stroke="none"/></svg></button>
+            <button class="btn btn-icon dense" type="button" aria-label="Close dense"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
+            <button class="btn btn-icon ghost" type="button" aria-label="Close ghost"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
+            <button class="btn btn-icon" type="button" aria-label="Disabled" disabled><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Fields -->
+      <section class="section" id="fields">
+        <div class="section-head"><h2>Form fields</h2><span>Inputs</span></div>
+        <div class="grid-2">
+          <div class="demo">
+            <div class="demo-label">Commerce boxed</div>
+            <div class="stack">
+              <label class="field">
+                <span class="field-label">Email</span>
+                <input class="field-control" type="email" placeholder="you@clinic.com" value="rey@bravo.ph" />
+              </label>
+              <label class="field">
+                <span class="field-label">Mobile</span>
+                <input class="field-control error" type="text" value="09" aria-invalid="true" />
+                <span class="field-error">Enter a valid PH mobile number</span>
+              </label>
+            </div>
+          </div>
+          <div class="demo">
+            <div class="demo-label">Editorial ruled</div>
+            <div class="stack">
+              <label class="field ruled">
+                <span class="field-label editorial">Full name</span>
+                <input class="field-control field-ruled" type="text" value="Dr. Rey Aquino" />
+              </label>
+              <label class="field ruled">
+                <span class="field-label editorial">Clinic</span>
+                <input class="field-control field-ruled" type="text" placeholder="Clinic name" />
+              </label>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Segment + Tabs -->
+      <section class="section" id="segment">
+        <div class="section-head"><h2>Segmented control</h2><span>Choice</span></div>
+        <div class="demo row">
+          <div class="segment" role="group" aria-label="Plan">
+            <button type="button" class="on">Trial</button>
+            <button type="button">Protocol</button>
+          </div>
+          <div class="segment blue" role="group" aria-label="QR mode">
+            <button type="button" class="on">Shop</button>
+            <button type="button">Profile</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Switch -->
+      <section class="section" id="switch">
+        <div class="section-head"><h2>Switch</h2><span>Boolean</span></div>
+        <div class="demo">
+          <div class="demo-label">Off · on — blue track when checked</div>
+          <div class="row">
+            <div class="switch-row">
+              <button type="button" class="switch" role="switch" aria-checked="false" aria-label="SMS alerts"></button>
+              <span>SMS alerts</span>
+            </div>
+            <div class="switch-row">
+              <button type="button" class="switch" role="switch" aria-checked="true" aria-label="Email digest"></button>
+              <span>Email digest</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="tabs">
+        <div class="section-head"><h2>Tabs</h2><span>Admin</span></div>
+        <div class="demo demo--flush">
+          <div class="tabs" role="tablist">
+            <button type="button" class="on" role="tab" aria-selected="true">Wheel</button>
+            <button type="button" role="tab">Doctors</button>
+            <button type="button" role="tab">Orders</button>
+            <button type="button" role="tab">Newsletter</button>
+          </div>
+          <div style="padding:18px;color:var(--ink-3);font-size:14px">Active tab: blue fill, bone label, square admin dialect.</div>
+        </div>
+      </section>
+
+      <!-- Top bar -->
+      <section class="section" id="topbar">
+        <div class="section-head"><h2>Top bar</h2><span>Shell</span></div>
+        <p class="note">Fixed site chrome for marketing / shop. Not used on admin or booth.</p>
+        <div class="demo demo--flush">
+          <header class="topbar">
+            <div class="brand">GutGuard <em>Clinic</em></div>
+            <nav aria-label="Primary">
+              <a href="#" aria-current="page">System</a>
+              <a href="#">Science</a>
+              <a href="#">Shop</a>
+            </nav>
+            <div class="actions">
+              <button class="btn btn-text">Log in</button>
+              <button class="btn btn-partner" style="min-height:40px;font-size:13px">Get started</button>
+            </div>
+          </header>
+        </div>
+      </section>
+
+      <!-- Sidebar + bottom -->
+      <section class="section" id="sidebar">
+        <div class="section-head"><h2>Sidebar + bottom bar</h2><span>Shell</span></div>
+        <p class="note">Desktop sidebar + mobile bottom CTA. Same Doctors skin — structure from Lifestyle / Academy prototypes.</p>
+        <div class="shell-demo">
+          <aside class="side">
+            <div class="side-brand">GutGuard <em>Life</em></div>
+            <button type="button" class="on">My Health</button>
+            <button type="button">My Team</button>
+            <button type="button">My Story</button>
+            <button type="button" style="margin-top:8px;color:var(--ink-3);font-size:13px">Settings</button>
+            <div class="side-foot">
+              <b>Supply left · 4 days</b>
+              <button class="btn btn-partner" style="width:100%;min-height:42px;font-size:13px">Reorder</button>
+            </div>
+          </aside>
+          <div class="shell-main">
+            <div class="eyebrow">My Health</div>
+            <h3 style="font-family:var(--serif);font-size:28px;font-weight:400;margin:6px 0 10px">Day 4 of 10</h3>
+            <p style="color:var(--ink-3);font-size:14px;max-width:36ch">Main column content. Bottom bar is shown here as a preview of the mobile CTA.</p>
+            <div class="bottom-bar">
+              <div>
+                <div class="eye">Do this next</div>
+                <div class="title">Order your refill</div>
+              </div>
+              <button class="btn btn-partner" style="min-height:44px">Order</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Masthead -->
+      <section class="section" id="masthead">
+        <div class="section-head"><h2>Masthead</h2><span>Booth</span></div>
+        <div class="demo">
+          <div class="masthead">
+            <div class="mast-logos">
+              <div class="mast-mark">GG</div>
+              <span class="mast-x">×</span>
+              <div class="mast-mark alt">TT</div>
+              <div class="mast-text" style="margin-left:8px">
+                <div class="name">Physicians Program</div>
+                <div class="ed">Manila edition · Aug 2026</div>
+              </div>
+            </div>
+            <button class="btn btn-secondary" style="border-radius:999px">About</button>
+          </div>
+          <div class="rail" style="margin-top:18px" aria-label="Progress">
+            <span class="dot done"></span><span class="seg done"></span>
+            <span class="dot done"></span><span class="seg done"></span>
+            <span class="dot active"></span><span class="seg"></span>
+            <span class="dot"></span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Admin -->
+      <section class="section" id="admin">
+        <div class="section-head"><h2>Admin shell</h2><span>Ops</span></div>
+        <div class="demo">
+          <div class="admin-hero">
+            <div>
+              <div class="kicker">Admin · Wheel</div>
+              <h3>Prize desk</h3>
+            </div>
+            <div class="admin-summary">Live spins<strong>128</strong></div>
+          </div>
+          <div class="tabs">
+            <button type="button" class="on">Wheel</button>
+            <button type="button">Doctors</button>
+            <button type="button">SMS</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Cards -->
+      <section class="section" id="cards">
+        <div class="section-head"><h2>Cards</h2><span>Surfaces</span></div>
+        <div class="grid-3">
+          <div class="card editorial">
+            <div class="eyebrow" style="color:var(--ink-3)">Editorial</div>
+            <h3>Ruled panel</h3>
+            <p>Square, bone, no heavy shadow — printed-form feel.</p>
+          </div>
+          <div class="card">
+            <div class="eyebrow">Commerce</div>
+            <h3>Raised paper</h3>
+            <p>14px radius, soft shadow, paper on bone.</p>
+          </div>
+          <div class="card auth">
+            <div class="eyebrow">Partner auth</div>
+            <h3>Sign in</h3>
+            <p>Blue top edge marks the auth moment.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Feedback -->
+      <section class="section" id="feedback">
+        <div class="section-head"><h2>Badge · Alert · Toast</h2><span>Feedback</span></div>
+        <div class="grid-2">
+          <div class="demo stack">
+            <div class="demo-label">Badges</div>
+            <div class="row">
+              <span class="badge">Pending</span>
+              <span class="badge paid">Paid</span>
+              <span class="badge paid">Active</span>
+            </div>
+            <div class="demo-label" style="margin-top:8px">Alerts</div>
+            <div class="alert">Your card is ready — show it at the door.</div>
+            <div class="alert error"><span class="t">Error</span>We couldn’t verify that mobile number.</div>
+          </div>
+          <div class="demo">
+            <div class="demo-label">Toast</div>
+            <div class="toast">
+              <div class="t">Success</div>
+              <p>Order confirmed. We’ll text tracking details shortly.</p>
+            </div>
+            <div class="toast" style="margin-top:12px">
+              <div class="t err">Error</div>
+              <p>Payment failed — try another method.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Dialog -->
+      <section class="section" id="dialog">
+        <div class="section-head"><h2>Dialog</h2><span>Header · body · footer</span></div>
+        <p class="note">Structured chrome with SVG close. Prefer Dialog for titled confirm/detail flows. Backdrop rules stay with Modal.</p>
+        <div class="grid-2">
+          <div class="modal-demo">
+            <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="dlg-commerce-title">
+              <div class="dialog-header">
+                <h3 id="dlg-commerce-title">Confirm registration</h3>
+                <button class="btn btn-icon ghost" type="button" aria-label="Close"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
+              </div>
+              <div class="dialog-body">
+                Submit registration for <strong style="color:var(--ink)">Dr. Rey Aquino</strong>? They will receive an SMS with partner portal access.
+              </div>
+              <div class="dialog-footer">
+                <button class="btn btn-secondary" type="button">Cancel</button>
+                <button class="btn btn-partner" type="button">Confirm</button>
+              </div>
+            </div>
+          </div>
+          <div class="modal-demo">
+            <div class="dialog square" role="dialog" aria-modal="true" aria-labelledby="dlg-admin-title">
+              <div class="dialog-header">
+                <h3 id="dlg-admin-title">Void order</h3>
+                <button class="btn btn-icon ghost square" type="button" aria-label="Close"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
+              </div>
+              <div class="dialog-body">
+                Void <strong style="color:var(--ink)">GG-24018</strong>? This cannot be undone from the admin table.
+              </div>
+              <div class="dialog-footer">
+                <button class="btn btn-secondary square" type="button">Cancel</button>
+                <button class="btn btn-secondary square" type="button" style="border-color:var(--error);color:var(--error-text)">Void</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Modal / Drawer -->
+      <section class="section" id="modal">
+        <div class="section-head"><h2>Modal · Drawer</h2><span>Overlays</span></div>
+        <p class="note">Simple confirm shell + drawer. For header / close / footer chrome, use <a href="#dialog">Dialog</a>.</p>
+        <div class="grid-2">
+          <div class="modal-demo">
+            <div class="modal">
+              <h3>Confirm</h3>
+              <p>Submit registration for Dr. Rey Aquino?</p>
+              <div class="actions">
+                <button class="btn btn-secondary">Cancel</button>
+                <button class="btn btn-partner">Confirm</button>
+              </div>
+            </div>
+          </div>
+          <div class="drawer-demo">
+            <div class="drawer-scrim"></div>
+            <aside class="drawer">
+              <h3>Basket</h3>
+              <p style="color:var(--ink-3);font-size:14px;margin-bottom:14px">Side drawer · paper · soft shadow.</p>
+              <button class="btn btn-commerce" style="width:100%;min-height:52px;font-size:14px">Checkout</button>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <!-- Table -->
+      <section class="section" id="table">
+        <div class="section-head"><h2>Table</h2><span>Data</span></div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Name</th><th>Clinic</th><th>Status</th><th></th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Dr. Rey Aquino</td>
+                <td>Bravo Medical</td>
+                <td><span class="badge paid">Paid</span></td>
+                <td><button class="btn btn-secondary" style="min-height:36px;padding:0 12px">Open</button></td>
+              </tr>
+              <tr>
+                <td>Dr. Ana Cruz</td>
+                <td>North Clinic</td>
+                <td><span class="badge">Pending</span></td>
+                <td><button class="btn btn-secondary" style="min-height:36px;padding:0 12px">Open</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Def list -->
+      <section class="section" id="deflist">
+        <div class="section-head"><h2>Definition list</h2><span>Data</span></div>
+        <div class="demo">
+          <dl class="deflist">
+            <div><dt>Full name</dt><dd>Dr. Rey Aquino</dd></div>
+            <div><dt>Clinic</dt><dd>Bravo Medical</dd></div>
+            <div><dt>Mobile</dt><dd>+63 917 000 0000</dd></div>
+          </dl>
+        </div>
+      </section>
+
+      <!-- QR / progress / tasks -->
+      <section class="section" id="qr">
+        <div class="section-head"><h2>QR · Progress · Tasks</h2><span>Utility</span></div>
+        <div class="grid-3">
+          <div class="demo">
+            <div class="demo-label">QR block</div>
+            <div class="qr" aria-hidden="true">
+              <div class="qr-grid">
+                <i></i><i></i><i></i><i class="off"></i><i></i><i></i><i></i>
+                <i></i><i class="off"></i><i></i><i class="off"></i><i></i><i class="off"></i><i></i>
+                <i></i><i></i><i></i><i class="off"></i><i></i><i></i><i></i>
+                <i class="off"></i><i class="off"></i><i class="off"></i><i></i><i class="off"></i><i class="off"></i><i class="off"></i>
+                <i></i><i></i><i></i><i class="off"></i><i></i><i class="off"></i><i></i>
+                <i></i><i class="off"></i><i></i><i></i><i class="off"></i><i></i><i></i>
+                <i></i><i></i><i></i><i class="off"></i><i></i><i></i><i></i>
+              </div>
+            </div>
+            <div class="row" style="margin-top:12px">
+              <button class="btn btn-secondary">Download</button>
+            </div>
+          </div>
+          <div class="demo">
+            <div class="demo-label">Section label</div>
+            <div class="section-label">
+              <i></i><span class="num">01</span><span class="lab">What it takes</span>
+            </div>
+            <p style="color:var(--ink-2);font-size:14px;margin-top:8px">Complete each requirement to unlock the next rank.</p>
+          </div>
+          <div class="demo">
+            <div class="demo-label">Task items</div>
+            <div class="task done">
+              <span class="num">✓</span>
+              <div><b>Verify TikTok</b><div class="meta">Connected</div></div>
+            </div>
+            <div class="task">
+              <span class="num">2</span>
+              <div><b>Book session</b><div class="meta">Choose a date</div></div>
+              <span class="chev" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Empty -->
+      <section class="section" id="empty">
+        <div class="section-head"><h2>Empty state</h2><span>Feedback</span></div>
+        <div class="empty">
+          <b>No orders yet</b>
+          <span>When partners check out, they’ll show up here.</span>
+        </div>
+      </section>
+
+      <!-- File attachment -->
+      <section class="section" id="file">
+        <div class="section-head"><h2>File attachment</h2><span>Custom · hide native input</span></div>
+        <p class="note">Never show the browser’s default file control. Keep <code>&lt;input type="file"&gt;</code> visually hidden; open it from the drop zone or a secondary button.</p>
+        <div class="grid-2">
+          <div class="demo">
+            <div class="demo-label">Drop zone (empty)</div>
+            <div class="file-attach" data-file-demo="empty">
+              <input class="file-attach__input" id="file-demo-empty" type="file" accept=".html,.png,.jpg,.jpeg,image/*,text/html" />
+              <label class="upload" for="file-demo-empty">
+                <span class="up-ico" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24"><path d="M12 3v12"/><path d="m17 8-5-5-5 5"/><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/></svg></span>
+                <b>Drop HTML or image here</b>
+                <span class="hint">Max 5MB · .html .png .jpg</span>
+                <span class="btn btn-secondary">Choose file</span>
+              </label>
+            </div>
+          </div>
+          <div class="demo">
+            <div class="demo-label">Selected · progress · remove (SVG)</div>
+            <div class="file-row">
+              <div class="ico" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg></div>
+              <div>
+                <div class="name">newsletter-aug.html</div>
+                <div class="meta">128 KB · uploading…</div>
+              </div>
+              <button class="btn btn-icon rm" type="button" aria-label="Remove"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
+            </div>
+            <div class="file-progress" aria-hidden="true"><i></i></div>
+            <div class="row" style="margin-top:12px">
+              <button class="btn btn-partner" type="button">Upload</button>
+            </div>
+          </div>
+          <div class="demo">
+            <div class="demo-label">Error</div>
+            <div class="file-attach">
+              <input class="file-attach__input" id="file-demo-err" type="file" disabled tabindex="-1" />
+              <label class="upload has-error" for="file-demo-err">
+                <span class="up-ico" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24"><path d="M12 3v12"/><path d="m17 8-5-5-5 5"/><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/></svg></span>
+                <b>File too large</b>
+                <span class="hint">Max 5MB — choose a smaller file</span>
+                <span class="btn btn-secondary">Choose file</span>
+              </label>
+            </div>
+          </div>
+          <div class="demo">
+            <div class="demo-label">Compact button (still custom)</div>
+            <div class="file-attach file-compact">
+              <input class="file-attach__input" id="file-demo-compact" type="file" accept="image/*" />
+              <label class="btn btn-secondary" for="file-demo-compact">Choose file</label>
+              <span style="color:var(--ink-3);font-size:13px">PNG or JPG · camera OK</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Avatar -->
+      <section class="section" id="avatar">
+        <div class="section-head"><h2>Avatar</h2><span>Utilities</span></div>
+        <div class="demo row">
+          <div class="avatar-row">
+            <div class="avatar lg blue">RA</div>
+            <div><b>Rey Aquino</b><span>Team Bravo</span></div>
+          </div>
+          <div class="avatar">AC</div>
+          <div class="avatar sm">NL</div>
+          <div class="avatar blue">GG</div>
+        </div>
+      </section>
+
+      <!-- Search -->
+      <section class="section" id="search">
+        <div class="section-head"><h2>Search field</h2><span>Utilities</span></div>
+        <div class="demo" style="max-width:420px">
+          <div class="search">
+            <span class="ico" aria-hidden="true">⌕</span>
+            <input type="text" inputmode="search" placeholder="Search doctors…" value="Aquino" />
+            <button class="clear" type="button" aria-label="Clear"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Stepper -->
+      <section class="section" id="stepper">
+        <div class="section-head"><h2>Quantity stepper</h2><span>Utilities</span></div>
+        <div class="demo row">
+          <div class="stepper" aria-label="Quantity">
+            <button type="button" aria-label="Decrease">−</button>
+            <span class="val">2</span>
+            <button type="button" aria-label="Increase">+</button>
+          </div>
+          <div class="stepper" aria-label="Doses">
+            <button type="button" disabled aria-label="Decrease">−</button>
+            <span class="val">1</span>
+            <button type="button" aria-label="Increase">+</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Pagination -->
+      <section class="section" id="pagination">
+        <div class="section-head"><h2>Pagination</h2><span>Utilities</span></div>
+        <div class="demo">
+          <div class="pagination">
+            <div class="meta">Showing 1–20 of 240</div>
+            <div class="controls">
+              <label class="meta" for="psize">Per page</label>
+              <select id="psize"><option>20</option><option>50</option></select>
+              <button class="btn btn-secondary square" type="button" disabled>Prev</button>
+              <button class="btn btn-secondary square" type="button">Next</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Dropdown -->
+      <section class="section" id="dropdown">
+        <div class="section-head"><h2>Dropdown menu</h2><span>Utilities</span></div>
+        <div class="demo">
+          <div class="menu-wrap">
+            <button class="btn btn-icon" type="button" aria-expanded="true" aria-haspopup="menu">···</button>
+            <div class="menu" role="menu">
+              <button type="button" role="menuitem">Open</button>
+              <button type="button" role="menuitem">Download QR</button>
+              <hr />
+              <button type="button" role="menuitem" class="danger">Remove</button>
+            </div>
+          </div>
+          <p class="note" style="margin:48px 0 0">Overflow actions for tables and cards. Gold focus on trigger; blue wash on item hover.</p>
+        </div>
+      </section>
+
+      <!-- Tooltip -->
+      <section class="section" id="tooltip">
+        <div class="section-head"><h2>Tooltip</h2><span>Utilities</span></div>
+        <div class="demo">
+          <div class="tip-wrap">
+            <button class="btn btn-secondary" type="button">Hover or focus me</button>
+            <span class="tip" role="tooltip">Short helper — not for essential copy</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Spinner / Skeleton -->
+      <section class="section" id="spinner">
+        <div class="section-head"><h2>Spinner · Skeleton</h2><span>Loading</span></div>
+        <div class="grid-2">
+          <div class="demo">
+            <div class="demo-label">Spinner</div>
+            <div class="row">
+              <span class="spinner" aria-hidden="true"></span>
+              <span class="spinner lg" aria-hidden="true"></span>
+              <button class="btn btn-partner" type="button" style="gap:10px">
+                <span class="spinner on-dark" aria-hidden="true"></span> Saving…
+              </button>
+            </div>
+          </div>
+          <div class="demo">
+            <div class="demo-label">Skeleton</div>
+            <div class="avatar-row" style="margin-bottom:14px">
+              <div class="skeleton avatar"></div>
+              <div style="flex:1">
+                <div class="skeleton line" style="width:70%"></div>
+                <div class="skeleton line short"></div>
+              </div>
+            </div>
+            <div class="skeleton block"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Accordion -->
+      <section class="section" id="accordion">
+        <div class="section-head"><h2>Accordion</h2><span>Extended</span></div>
+        <div class="accordion">
+          <div class="acc-item open">
+            <button class="acc-head" type="button" aria-expanded="true">What is GutGuard?<span class="chev" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></span></button>
+            <div class="acc-body">Clinical + editorial premium health products and programs. This panel uses Doctors bone / paper / rule.</div>
+          </div>
+          <div class="acc-item">
+            <button class="acc-head" type="button" aria-expanded="false">How do refills work?<span class="chev" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></span></button>
+            <div class="acc-body">Order from the member bottom bar or shop. Tracking arrives by SMS.</div>
+          </div>
+          <div class="acc-item">
+            <button class="acc-head" type="button" aria-expanded="false">Where is my QR?<span class="chev" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></span></button>
+            <div class="acc-body">On the flip side of your door card and in partner portal.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Breadcrumbs -->
+      <section class="section" id="breadcrumbs">
+        <div class="section-head"><h2>Breadcrumbs</h2><span>Extended</span></div>
+        <div class="demo">
+          <nav class="crumbs" aria-label="Breadcrumb">
+            <a href="#">Admin</a><span class="sep">/</span>
+            <a href="#">Orders</a><span class="sep">/</span>
+            <span class="cur">GG-24018</span>
+          </nav>
+        </div>
+      </section>
+
+      <!-- Date picker -->
+      <section class="section" id="datepicker">
+        <div class="section-head"><h2>Date picker</h2><span>Extended</span></div>
+        <div class="demo">
+          <div class="datepicker" aria-label="Calendar">
+            <div class="dp-head">
+              <button class="btn btn-icon dense" type="button" aria-label="Previous month"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button>
+              <span>August 2026</span>
+              <button class="btn btn-icon dense" type="button" aria-label="Next month"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
+            </div>
+            <div class="dp-grid">
+              <span class="dow">Su</span><span class="dow">Mo</span><span class="dow">Tu</span><span class="dow">We</span><span class="dow">Th</span><span class="dow">Fr</span><span class="dow">Sa</span>
+              <button type="button" class="mute">26</button><button type="button" class="mute">27</button><button type="button" class="mute">28</button><button type="button" class="mute">29</button><button type="button" class="mute">30</button><button type="button" class="mute">31</button><button type="button">1</button>
+              <button type="button">2</button><button type="button">3</button><button type="button">4</button><button type="button">5</button><button type="button">6</button><button type="button">7</button><button type="button">8</button>
+              <button type="button">9</button><button type="button">10</button><button type="button">11</button><button type="button" class="today on">12</button><button type="button">13</button><button type="button">14</button><button type="button">15</button>
+              <button type="button">16</button><button type="button">17</button><button type="button">18</button><button type="button">19</button><button type="button">20</button><button type="button">21</button><button type="button">22</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Notification bell -->
+      <section class="section" id="notify">
+        <div class="section-head"><h2>Notification bell</h2><span>Extended</span></div>
+        <div class="demo" style="min-height:220px">
+          <div class="bell-wrap">
+            <button class="bell-btn" type="button" aria-label="Notifications">🔔</button>
+            <span class="bell-count">3</span>
+            <div class="bell-panel" role="menu">
+              <div class="ph">Notifications</div>
+              <button class="bell-item unread" type="button"><b>Refill reminder</b><span>4 days of supply left</span></button>
+              <button class="bell-item unread" type="button"><b>Session booked</b><span>Thu · Bravo Clinic</span></button>
+              <button class="bell-item" type="button"><b>Welcome</b><span>Your card is ready</span></button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Chat link row -->
+      <section class="section" id="chatrow">
+        <div class="section-head"><h2>Chat link row</h2><span>Extended</span></div>
+        <div class="demo">
+          <button class="chat-row" type="button">
+            <span class="chat-tile">TG</span>
+            <span><b>Team Bravo chat</b><em>24 members · Telegram</em></span>
+            <span class="go">Open →</span>
+          </button>
+          <p class="note" style="margin-top:12px">Channel tile may use a local brand color; the rest stays Doctors paper / rule / ink.</p>
+        </div>
+      </section>
+
+      <!-- GG-UI-LIBRARY:START (generated 2026-10-08 by gutguard-ui/scripts/export-obsidian-showcase.mjs; do not edit by hand) -->
+      <header class="uil-intro" id="ui-library">
+        <div class="eyebrow">GutGuard UI Library</div>
+        <h2>Components, sections <em>and screens</em></h2>
+        <p class="note">Every component, page section and whole screen of the Website, Shop and Lifestyle, from the GutGuard UI Library (Next.js + Tailwind via the token bridge). Screenshots of the real rendered code, 2026-10-08. Component notes: vault folder <code>GutGuard UI Library/</code>. Live, interactive version with code: run <code>npm run dev</code> in <code>gutguard-ui</code>.</p>
+      </header>
+
+      <section class="section" id="uil-button">
+        <div class="section-head"><h2>Button</h2><span>UI Library · Primitives</span></div>
+        <p class="note">Every button and text link. Primary for the one main action on a screen; dark in the top bar; light on blue bands; ghost and link for secondary actions. Size lg is the full-width phone button.</p>
+        <div class="uil-meta"><span>w-hero-actions</span><span>w-offer</span><span>w-trialband</span><span>s-bar</span><span>s-card</span><span>s-free</span><span>s-paybtn</span><span>s-done</span><span>g-cta</span><span>l-firststep</span><span>g-first</span></div>
+        <div class="uil-shots">
+          <figure class="uil-shot uil-phone">
+            <figcaption>Phone · 390<a href="ui-library/button-390.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/button-390.webp" width="390" height="572" loading="lazy" alt="Button at 390px" /></div>
+          </figure>
+          <figure class="uil-shot uil-desk">
+            <figcaption>Desktop · 1440<a href="ui-library/button-1440.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/button-1440.webp" width="1440" height="450" loading="lazy" alt="Button at 1440px" /></div>
+          </figure>
+        </div>
+        <p class="uil-code">Code: <code>gutguard-ui/components/ui/Button.tsx</code> <code>gutguard-ui/showcase/examples/Button.tsx</code></p>
+      </section>
+
+      <section class="section" id="uil-icon-button">
+        <div class="section-head"><h2>IconButton</h2><span>UI Library · Primitives</span></div>
+        <p class="note">Icon-only control: back, menu, close, basket (with count), Lifestyle shop/settings/camera. Always give it a label.</p>
+        <div class="uil-meta"><span>w-nav</span><span>s-top</span><span>l-nav</span><span>l-dose-next</span></div>
+        <div class="uil-shots">
+          <figure class="uil-shot uil-phone">
+            <figcaption>Phone · 390<a href="ui-library/icon-button-390.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/icon-button-390.webp" width="390" height="132" loading="lazy" alt="IconButton at 390px" /></div>
+          </figure>
+          <figure class="uil-shot uil-desk">
+            <figcaption>Desktop · 1440<a href="ui-library/icon-button-1440.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/icon-button-1440.webp" width="1440" height="120" loading="lazy" alt="IconButton at 1440px" /></div>
+          </figure>
+        </div>
+        <p class="uil-code">Code: <code>gutguard-ui/components/ui/IconButton.tsx</code> <code>gutguard-ui/showcase/examples/IconButton.tsx</code></p>
+      </section>
+
+      <section class="section" id="uil-badge">
+        <div class="section-head"><h2>Badge</h2><span>UI Library · Primitives</span></div>
+        <p class="note">Short mono labels for state and offers, plus the coloured-dot status line used on My Team.</p>
+        <div class="uil-meta"><span>w-hero</span><span>w-miage</span><span>w-doors</span><span>s-chips</span><span>s-watch</span><span>l-plan</span><span>g-offer</span><span>l-team</span></div>
+        <div class="uil-shots">
+          <figure class="uil-shot uil-phone">
+            <figcaption>Phone · 390<a href="ui-library/badge-390.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/badge-390.webp" width="390" height="164" loading="lazy" alt="Badge at 390px" /></div>
+          </figure>
+          <figure class="uil-shot uil-desk">
+            <figcaption>Desktop · 1440<a href="ui-library/badge-1440.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/badge-1440.webp" width="1440" height="132" loading="lazy" alt="Badge at 1440px" /></div>
+          </figure>
+        </div>
+        <p class="uil-code">Code: <code>gutguard-ui/components/ui/Badge.tsx</code> <code>gutguard-ui/showcase/examples/Badge.tsx</code></p>
+      </section>
+
+      <section class="section" id="uil-eyebrow">
+        <div class="section-head"><h2>Eyebrow</h2><span>UI Library · Primitives</span></div>
+        <p class="note">Mono uppercase label that sits above a heading or a group of fields.</p>
+        <div class="uil-meta"><span>w-hero</span><span>w-trialband</span><span>s-co</span><span>l-plan</span></div>
+        <div class="uil-shots">
+          <figure class="uil-shot uil-phone">
+            <figcaption>Phone · 390<a href="ui-library/eyebrow-390.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/eyebrow-390.webp" width="390" height="169" loading="lazy" alt="Eyebrow at 390px" /></div>
+          </figure>
+          <figure class="uil-shot uil-desk">
+            <figcaption>Desktop · 1440<a href="ui-library/eyebrow-1440.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/eyebrow-1440.webp" width="1440" height="201" loading="lazy" alt="Eyebrow at 1440px" /></div>
+          </figure>
+        </div>
+        <p class="uil-code">Code: <code>gutguard-ui/components/ui/Eyebrow.tsx</code> <code>gutguard-ui/showcase/examples/Eyebrow.tsx</code></p>
+      </section>
+
+      <section class="section" id="uil-price">
+        <div class="section-head"><h2>Price</h2><span>UI Library · Primitives</span></div>
+        <p class="note">Serif amount with a short caption under it (site) or beside it (Lifestyle).</p>
+        <div class="uil-meta"><span>w-offer</span><span>w-trialband</span><span>s-watch</span><span>l-firststep</span><span>g-first</span></div>
+        <div class="uil-shots">
+          <figure class="uil-shot uil-phone">
+            <figcaption>Phone · 390<a href="ui-library/price-390.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/price-390.webp" width="390" height="209" loading="lazy" alt="Price at 390px" /></div>
+          </figure>
+          <figure class="uil-shot uil-desk">
+            <figcaption>Desktop · 1440<a href="ui-library/price-1440.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/price-1440.webp" width="1440" height="156" loading="lazy" alt="Price at 1440px" /></div>
+          </figure>
+        </div>
+        <p class="uil-code">Code: <code>gutguard-ui/components/ui/Price.tsx</code> <code>gutguard-ui/showcase/examples/Price.tsx</code></p>
+      </section>
+
+      <section class="section" id="uil-avatar">
+        <div class="section-head"><h2>Avatar</h2><span>UI Library · Primitives</span></div>
+        <p class="note">Initials in a circle for people rows and quotes.</p>
+        <div class="uil-meta"><span>w-review</span><span>l-family</span><span>g-sponsor</span><span>l-team</span></div>
+        <div class="uil-shots">
+          <figure class="uil-shot uil-phone">
+            <figcaption>Phone · 390<a href="ui-library/avatar-390.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/avatar-390.webp" width="390" height="120" loading="lazy" alt="Avatar at 390px" /></div>
+          </figure>
+          <figure class="uil-shot uil-desk">
+            <figcaption>Desktop · 1440<a href="ui-library/avatar-1440.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/avatar-1440.webp" width="1440" height="120" loading="lazy" alt="Avatar at 1440px" /></div>
+          </figure>
+        </div>
+        <p class="uil-code">Code: <code>gutguard-ui/components/ui/Avatar.tsx</code> <code>gutguard-ui/showcase/examples/Avatar.tsx</code></p>
+      </section>
+
+      <section class="section" id="uil-points-pill">
+        <div class="section-head"><h2>PointsPill</h2><span>UI Library · Primitives</span></div>
+        <p class="note">Small paper pill in the Lifestyle top bar: the member's E-Points, or a plain &quot;Log in&quot; pill on the landing page.</p>
+        <div class="uil-meta"><span>l-nav</span><span>g-nav</span></div>
+        <div class="uil-shots">
+          <figure class="uil-shot uil-phone">
+            <figcaption>Phone · 390<a href="ui-library/points-pill-390.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/points-pill-390.webp" width="390" height="120" loading="lazy" alt="PointsPill at 390px" /></div>
+          </figure>
+          <figure class="uil-shot uil-desk">
+            <figcaption>Desktop · 1440<a href="ui-library/points-pill-1440.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/points-pill-1440.webp" width="1440" height="120" loading="lazy" alt="PointsPill at 1440px" /></div>
+          </figure>
+        </div>
+        <p class="uil-code">Code: <code>gutguard-ui/components/ui/PointsPill.tsx</code> <code>gutguard-ui/showcase/examples/PointsPill.tsx</code></p>
+      </section>
+
+      <section class="section" id="uil-progress-bar">
+        <div class="section-head"><h2>ProgressBar</h2><span>UI Library · Primitives</span></div>
+        <p class="note">Thin progress bar. Journey for Lifestyle progress (nights, days of 90) with segment ticks; heat and recovery for the Blood Scan readout bars.</p>
+        <div class="uil-meta"><span>l-watch</span><span>l-story</span><span>w-hero</span></div>
+        <div class="uil-shots">
+          <figure class="uil-shot uil-phone">
+            <figcaption>Phone · 390<a href="ui-library/progress-bar-390.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/progress-bar-390.webp" width="390" height="428" loading="lazy" alt="ProgressBar at 390px" /></div>
+          </figure>
+          <figure class="uil-shot uil-desk">
+            <figcaption>Desktop · 1440<a href="ui-library/progress-bar-1440.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/progress-bar-1440.webp" width="1440" height="460" loading="lazy" alt="ProgressBar at 1440px" /></div>
+          </figure>
+        </div>
+        <p class="uil-code">Code: <code>gutguard-ui/components/ui/ProgressBar.tsx</code> <code>gutguard-ui/showcase/examples/ProgressBar.tsx</code></p>
+      </section>
+
+      <section class="section" id="uil-stepper">
+        <div class="section-head"><h2>Stepper</h2><span>UI Library · Primitives</span></div>
+        <p class="note">Minus / value / plus pill for small counts, like capsules per dose in Lifestyle settings.</p>
+        <div class="uil-meta"><span>l-settings</span></div>
+        <div class="uil-shots">
+          <figure class="uil-shot uil-phone">
+            <figcaption>Phone · 390<a href="ui-library/stepper-390.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/stepper-390.webp" width="390" height="132" loading="lazy" alt="Stepper at 390px" /></div>
+          </figure>
+          <figure class="uil-shot uil-desk">
+            <figcaption>Desktop · 1440<a href="ui-library/stepper-1440.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/stepper-1440.webp" width="1440" height="120" loading="lazy" alt="Stepper at 1440px" /></div>
+          </figure>
+        </div>
+        <p class="uil-code">Code: <code>gutguard-ui/components/ui/Stepper.tsx</code> <code>gutguard-ui/showcase/examples/Stepper.tsx</code></p>
+      </section>
+
+      <section class="section" id="uil-text-field">
+        <div class="section-head"><h2>TextField</h2><span>UI Library · Primitives</span></div>
+        <p class="note">Label, input and a help or error line, for any input type. Shop variant at checkout, Lifestyle variant on sign-up and log-in. FieldRow puts two fields side by side.</p>
+        <div class="uil-meta"><span>s-mobile</span><span>s-field</span><span>s-co</span><span>g-signup</span><span>g-login</span></div>
+        <div class="uil-shots">
+          <figure class="uil-shot uil-phone">
+            <figcaption>Phone · 390<a href="ui-library/text-field-390.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/text-field-390.webp" width="390" height="904" loading="lazy" alt="TextField at 390px" /></div>
+          </figure>
+          <figure class="uil-shot uil-desk">
+            <figcaption>Desktop · 1440<a href="ui-library/text-field-1440.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/text-field-1440.webp" width="1440" height="491" loading="lazy" alt="TextField at 1440px" /></div>
+          </figure>
+        </div>
+        <p class="uil-code">Code: <code>gutguard-ui/components/ui/TextField.tsx</code> <code>gutguard-ui/showcase/examples/TextField.tsx</code></p>
+      </section>
+
+      <section class="section" id="uil-checkbox">
+        <div class="section-head"><h2>Checkbox</h2><span>UI Library · Primitives</span></div>
+        <p class="note">Checkbox with a line of text that can hold links, e.g. the sign-up consent.</p>
+        <div class="uil-meta"><span>g-signup</span></div>
+        <div class="uil-shots">
+          <figure class="uil-shot uil-phone">
+            <figcaption>Phone · 390<a href="ui-library/checkbox-390.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/checkbox-390.webp" width="390" height="161" loading="lazy" alt="Checkbox at 390px" /></div>
+          </figure>
+          <figure class="uil-shot uil-desk">
+            <figcaption>Desktop · 1440<a href="ui-library/checkbox-1440.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/checkbox-1440.webp" width="1440" height="193" loading="lazy" alt="Checkbox at 1440px" /></div>
+          </figure>
+        </div>
+        <p class="uil-code">Code: <code>gutguard-ui/components/ui/Checkbox.tsx</code> <code>gutguard-ui/showcase/examples/Checkbox.tsx</code></p>
+      </section>
+
+      <section class="section" id="uil-code-input">
+        <div class="section-head"><h2>CodeInput</h2><span>UI Library · Primitives</span></div>
+        <p class="note">Wide input for the 6-digit SMS code, with spaced digits. Lets the phone fill the code from the SMS.</p>
+        <div class="uil-meta"><span>g-code</span><span>g-login</span></div>
+        <div class="uil-shots">
+          <figure class="uil-shot uil-phone">
+            <figcaption>Phone · 390<a href="ui-library/code-input-390.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/code-input-390.webp" width="390" height="268" loading="lazy" alt="CodeInput at 390px" /></div>
+          </figure>
+          <figure class="uil-shot uil-desk">
+            <figcaption>Desktop · 1440<a href="ui-library/code-input-1440.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/code-input-1440.webp" width="1440" height="300" loading="lazy" alt="CodeInput at 1440px" /></div>
+          </figure>
+        </div>
+        <p class="uil-code">Code: <code>gutguard-ui/components/ui/CodeInput.tsx</code> <code>gutguard-ui/showcase/examples/CodeInput.tsx</code></p>
+      </section>
+
+      <section class="section" id="uil-segmented-control">
+        <div class="section-head"><h2>SegmentedControl</h2><span>UI Library · Components</span></div>
+        <p class="note">Two or three options in a sunken track, exactly one selected. Toggle for the shop plan switch, choice for checkout questions, settings for Lifestyle preferences.</p>
+        <div class="uil-meta"><span>s-toggle</span><span>s-for</span><span>l-settings</span></div>
+        <div class="uil-shots">
+          <figure class="uil-shot uil-phone">
+            <figcaption>Phone · 390<a href="ui-library/segmented-control-390.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/segmented-control-390.webp" width="390" height="299" loading="lazy" alt="SegmentedControl at 390px" /></div>
+          </figure>
+          <figure class="uil-shot uil-desk">
+            <figcaption>Desktop · 1440<a href="ui-library/segmented-control-1440.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/segmented-control-1440.webp" width="1440" height="335" loading="lazy" alt="SegmentedControl at 1440px" /></div>
+          </figure>
+        </div>
+        <p class="uil-code">Code: <code>gutguard-ui/components/ui/SegmentedControl.tsx</code> <code>gutguard-ui/showcase/examples/SegmentedControl.tsx</code></p>
+      </section>
+
+      <section class="section" id="uil-combobox">
+        <div class="section-head"><h2>Combobox</h2><span>UI Library · Components</span></div>
+        <p class="note">Text field that suggests matching options as you type, like the checkout city search. Use when the list is too long for a select.</p>
+        <div class="uil-meta"><span>s-city</span></div>
+        <div class="uil-shots">
+          <figure class="uil-shot uil-phone">
+            <figcaption>Phone · 390<a href="ui-library/combobox-390.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/combobox-390.webp" width="390" height="302" loading="lazy" alt="Combobox at 390px" /></div>
+          </figure>
+          <figure class="uil-shot uil-desk">
+            <figcaption>Desktop · 1440<a href="ui-library/combobox-1440.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/combobox-1440.webp" width="1440" height="334" loading="lazy" alt="Combobox at 1440px" /></div>
+          </figure>
+        </div>
+        <p class="uil-code">Code: <code>gutguard-ui/components/ui/Combobox.tsx</code> <code>gutguard-ui/showcase/examples/Combobox.tsx</code></p>
+      </section>
+
+      <section class="section" id="uil-tabs">
+        <div class="section-head"><h2>Tabs</h2><span>UI Library · Components</span></div>
+        <p class="note">Sticky tab row. Pills for section jump links on long site pages; underline for the Lifestyle My Health / My Story / My Team switch.</p>
+        <div class="uil-meta"><span>w-sectabs</span><span>l-tabs</span></div>
+        <div class="uil-shots">
+          <figure class="uil-shot uil-phone">
+            <figcaption>Phone · 390<a href="ui-library/tabs-390.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/tabs-390.webp" width="390" height="166" loading="lazy" alt="Tabs at 390px" /></div>
+          </figure>
+          <figure class="uil-shot uil-desk">
+            <figcaption>Desktop · 1440<a href="ui-library/tabs-1440.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/tabs-1440.webp" width="1440" height="198" loading="lazy" alt="Tabs at 1440px" /></div>
+          </figure>
+        </div>
+        <p class="uil-code">Code: <code>gutguard-ui/components/ui/Tabs.tsx</code> <code>gutguard-ui/showcase/examples/Tabs.tsx</code></p>
+      </section>
+
+      <section class="section" id="uil-option-card">
+        <div class="section-head"><h2>OptionCard</h2><span>UI Library · Components</span></div>
+        <p class="note">Selectable card for packs (compact or wide with price and tag) and payment methods (radio). Wrap them in OptionGroup; a wide card spans both columns.</p>
+        <div class="uil-meta"><span>s-watch</span><span>s-trials</span><span>s-pays</span></div>
+        <div class="uil-shots">
+          <figure class="uil-shot uil-phone">
+            <figcaption>Phone · 390<a href="ui-library/option-card-390.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/option-card-390.webp" width="390" height="349" loading="lazy" alt="OptionCard at 390px" /></div>
+          </figure>
+          <figure class="uil-shot uil-desk">
+            <figcaption>Desktop · 1440<a href="ui-library/option-card-1440.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/option-card-1440.webp" width="1440" height="366" loading="lazy" alt="OptionCard at 1440px" /></div>
+          </figure>
+        </div>
+        <p class="uil-code">Code: <code>gutguard-ui/components/ui/OptionCard.tsx</code> <code>gutguard-ui/showcase/examples/OptionCard.tsx</code></p>
+      </section>
+
+      <section class="section" id="uil-choice-chip">
+        <div class="section-head"><h2>ChoiceChip</h2><span>UI Library · Components</span></div>
+        <p class="note">Three-up chips for pack size or goal, with an optional top tag, check mark and a saving line. Use ChoiceChips as the row.</p>
+        <div class="uil-meta"><span>s-chips</span><span>s-sub</span></div>
+        <div class="uil-shots">
+          <figure class="uil-shot uil-phone">
+            <figcaption>Phone · 390<a href="ui-library/choice-chip-390.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/choice-chip-390.webp" width="390" height="247" loading="lazy" alt="ChoiceChip at 390px" /></div>
+          </figure>
+          <figure class="uil-shot uil-desk">
+            <figcaption>Desktop · 1440<a href="ui-library/choice-chip-1440.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/choice-chip-1440.webp" width="1440" height="279" loading="lazy" alt="ChoiceChip at 1440px" /></div>
+          </figure>
+        </div>
+        <p class="uil-code">Code: <code>gutguard-ui/components/ui/ChoiceChip.tsx</code> <code>gutguard-ui/showcase/examples/ChoiceChip.tsx</code></p>
+      </section>
+
+      <section class="section" id="uil-stat-group">
+        <div class="section-head"><h2>StatGroup</h2><span>UI Library · Components</span></div>
+        <p class="note">A row of figures with short labels: editorial cards on the site, boxed strips in the shop and Lifestyle, and the trust band.</p>
+        <div class="uil-meta"><span>w-stats</span><span>s-stats</span><span>s-sub-stats</span><span>l-stats</span><span>l-story</span><span>l-team</span><span>w-trust</span><span>s-proof</span></div>
+        <div class="uil-shots">
+          <figure class="uil-shot uil-phone">
+            <figcaption>Phone · 390<a href="ui-library/stat-group-390.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/stat-group-390.webp" width="390" height="1222" loading="lazy" alt="StatGroup at 390px" /></div>
+          </figure>
+          <figure class="uil-shot uil-desk">
+            <figcaption>Desktop · 1440<a href="ui-library/stat-group-1440.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/stat-group-1440.webp" width="1440" height="826" loading="lazy" alt="StatGroup at 1440px" /></div>
+          </figure>
+        </div>
+        <p class="uil-code">Code: <code>gutguard-ui/components/ui/StatGroup.tsx</code> <code>gutguard-ui/showcase/examples/StatGroup.tsx</code></p>
+      </section>
+
+      <section class="section" id="uil-trust-line">
+        <div class="section-head"><h2>TrustLine</h2><span>UI Library · Components</span></div>
+        <p class="note">Centred row of small icon + text reassurances under a choice or a pay button, with an optional link.</p>
+        <div class="uil-meta"><span>s-trustline</span><span>s-basket</span></div>
+        <div class="uil-shots">
+          <figure class="uil-shot uil-phone">
+            <figcaption>Phone · 390<a href="ui-library/trust-line-390.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/trust-line-390.webp" width="390" height="120" loading="lazy" alt="TrustLine at 390px" /></div>
+          </figure>
+          <figure class="uil-shot uil-desk">
+            <figcaption>Desktop · 1440<a href="ui-library/trust-line-1440.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/trust-line-1440.webp" width="1440" height="121" loading="lazy" alt="TrustLine at 1440px" /></div>
+          </figure>
+        </div>
+        <p class="uil-code">Code: <code>gutguard-ui/components/ui/TrustLine.tsx</code> <code>gutguard-ui/showcase/examples/TrustLine.tsx</code></p>
+      </section>
+
+      <section class="section" id="uil-note">
+        <div class="section-head"><h2>Note</h2><span>UI Library · Components</span></div>
+        <p class="note">Small inline info line with an icon: a hint under the choice, payment fine print, or the delivery estimate.</p>
+        <div class="uil-meta"><span>s-card</span><span>s-co</span><span>s-basket</span></div>
+        <div class="uil-shots">
+          <figure class="uil-shot uil-phone">
+            <figcaption>Phone · 390<a href="ui-library/note-390.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/note-390.webp" width="390" height="156" loading="lazy" alt="Note at 390px" /></div>
+          </figure>
+          <figure class="uil-shot uil-desk">
+            <figcaption>Desktop · 1440<a href="ui-library/note-1440.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/note-1440.webp" width="1440" height="172" loading="lazy" alt="Note at 1440px" /></div>
+          </figure>
+        </div>
+        <p class="uil-code">Code: <code>gutguard-ui/components/ui/Note.tsx</code> <code>gutguard-ui/showcase/examples/Note.tsx</code></p>
+      </section>
+
+      <section class="section" id="uil-line-item">
+        <div class="section-head"><h2>LineItem</h2><span>UI Library · Components</span></div>
+        <p class="note">A row in the basket or order (thumb, name, details, Remove, price), or a numbered next step after payment.</p>
+        <div class="uil-meta"><span>s-basket</span><span>s-co</span><span>s-done</span></div>
+        <div class="uil-shots">
+          <figure class="uil-shot uil-phone">
+            <figcaption>Phone · 390<a href="ui-library/line-item-390.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/line-item-390.webp" width="390" height="466" loading="lazy" alt="LineItem at 390px" /></div>
+          </figure>
+          <figure class="uil-shot uil-desk">
+            <figcaption>Desktop · 1440<a href="ui-library/line-item-1440.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/line-item-1440.webp" width="1440" height="467" loading="lazy" alt="LineItem at 1440px" /></div>
+          </figure>
+        </div>
+        <p class="uil-code">Code: <code>gutguard-ui/components/ui/LineItem.tsx</code> <code>gutguard-ui/showcase/examples/LineItem.tsx</code></p>
+      </section>
+
+      <section class="section" id="uil-order-totals">
+        <div class="section-head"><h2>OrderTotals</h2><span>UI Library · Components</span></div>
+        <p class="note">Label/value rows ending in a big serif total, for checkout and the basket.</p>
+        <div class="uil-meta"><span>s-tots</span><span>s-basket</span></div>
+        <div class="uil-shots">
+          <figure class="uil-shot uil-phone">
+            <figcaption>Phone · 390<a href="ui-library/order-totals-390.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/order-totals-390.webp" width="390" height="350" loading="lazy" alt="OrderTotals at 390px" /></div>
+          </figure>
+          <figure class="uil-shot uil-desk">
+            <figcaption>Desktop · 1440<a href="ui-library/order-totals-1440.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/order-totals-1440.webp" width="1440" height="382" loading="lazy" alt="OrderTotals at 1440px" /></div>
+          </figure>
+        </div>
+        <p class="uil-code">Code: <code>gutguard-ui/components/ui/OrderTotals.tsx</code> <code>gutguard-ui/showcase/examples/OrderTotals.tsx</code></p>
+      </section>
+
+      <section class="section" id="uil-card">
+        <div class="section-head"><h2>Card</h2><span>UI Library · Components</span></div>
+        <p class="note">Bordered box with optional eyebrow, title, meta, key/value rows and a mono footer, plus CardGrid to lay them out (stacked on phone, 2 or 3 across on desktop). Paper for site cards, bone for symptom cards, dark on the MiAge band, panel for Lifestyle.</p>
+        <div class="uil-meta"><span>w-symptoms</span><span>w-about</span><span>w-phases</span><span>w-dose</span><span>w-miage</span><span>l-plan</span><span>g-offer</span></div>
+        <div class="uil-shots">
+          <figure class="uil-shot uil-phone">
+            <figcaption>Phone · 390<a href="ui-library/card-390.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/card-390.webp" width="390" height="3157" loading="lazy" alt="Card at 390px" /></div>
+          </figure>
+          <figure class="uil-shot uil-desk">
+            <figcaption>Desktop · 1440<a href="ui-library/card-1440.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/card-1440.webp" width="1440" height="1652" loading="lazy" alt="Card at 1440px" /></div>
+          </figure>
+        </div>
+        <p class="uil-code">Code: <code>gutguard-ui/components/ui/Card.tsx</code> <code>gutguard-ui/showcase/examples/Card.tsx</code></p>
+      </section>
+
+      <section class="section" id="uil-quote">
+        <div class="section-head"><h2>Quote</h2><span>UI Library · Components</span></div>
+        <p class="note">A member's words on a dark card with avatar, name and place. Use for testimonials.</p>
+        <div class="uil-meta"><span>w-review</span></div>
+        <div class="uil-shots">
+          <figure class="uil-shot uil-phone">
+            <figcaption>Phone · 390<a href="ui-library/quote-390.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/quote-390.webp" width="390" height="274" loading="lazy" alt="Quote at 390px" /></div>
+          </figure>
+          <figure class="uil-shot uil-desk">
+            <figcaption>Desktop · 1440<a href="ui-library/quote-1440.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/quote-1440.webp" width="1440" height="338" loading="lazy" alt="Quote at 1440px" /></div>
+          </figure>
+        </div>
+        <p class="uil-code">Code: <code>gutguard-ui/components/ui/Quote.tsx</code> <code>gutguard-ui/showcase/examples/Quote.tsx</code></p>
+      </section>
+
+      <section class="section" id="uil-section-heading">
+        <div class="section-head"><h2>SectionHeading</h2><span>UI Library · Components</span></div>
+        <p class="note">Opens a website section: numbered label, big serif heading with an italic blue accent, italic lead.</p>
+        <div class="uil-meta"><span>w-sechead</span></div>
+        <div class="uil-shots">
+          <figure class="uil-shot uil-phone">
+            <figcaption>Phone · 390<a href="ui-library/section-heading-390.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/section-heading-390.webp" width="390" height="517" loading="lazy" alt="SectionHeading at 390px" /></div>
+          </figure>
+          <figure class="uil-shot uil-desk">
+            <figcaption>Desktop · 1440<a href="ui-library/section-heading-1440.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/section-heading-1440.webp" width="1440" height="651" loading="lazy" alt="SectionHeading at 1440px" /></div>
+          </figure>
+        </div>
+        <p class="uil-code">Code: <code>gutguard-ui/components/ui/SectionHeading.tsx</code> <code>gutguard-ui/showcase/examples/SectionHeading.tsx</code></p>
+      </section>
+
+      <section class="section" id="uil-timeline">
+        <div class="section-head"><h2>Timeline</h2><span>UI Library · Components</span></div>
+        <p class="note">Ordered steps: BioScan checkpoints (Day 30/60/90), the protocol's roman-numeral steps, and the compact numbered next steps after checkout.</p>
+        <div class="uil-meta"><span>w-timeline</span><span>w-proto</span><span>s-done</span></div>
+        <div class="uil-shots">
+          <figure class="uil-shot uil-phone">
+            <figcaption>Phone · 390<a href="ui-library/timeline-390.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/timeline-390.webp" width="390" height="913" loading="lazy" alt="Timeline at 390px" /></div>
+          </figure>
+          <figure class="uil-shot uil-desk">
+            <figcaption>Desktop · 1440<a href="ui-library/timeline-1440.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/timeline-1440.webp" width="1440" height="748" loading="lazy" alt="Timeline at 1440px" /></div>
+          </figure>
+        </div>
+        <p class="uil-code">Code: <code>gutguard-ui/components/ui/Timeline.tsx</code> <code>gutguard-ui/showcase/examples/Timeline.tsx</code></p>
+      </section>
+
+      <section class="section" id="uil-list-row">
+        <div class="section-head"><h2>ListRow</h2><span>UI Library · Components</span></div>
+        <p class="note">Lifestyle row with a title and sub line. Tappable rows end in a blue chevron (plan sheet, skip the trial); static rows carry an icon and their own action (E-Points rewards).</p>
+        <div class="uil-meta"><span>l-plan-sheet</span><span>l-points</span><span>g-first</span></div>
+        <div class="uil-shots">
+          <figure class="uil-shot uil-phone">
+            <figcaption>Phone · 390<a href="ui-library/list-row-390.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/list-row-390.webp" width="390" height="690" loading="lazy" alt="ListRow at 390px" /></div>
+          </figure>
+          <figure class="uil-shot uil-desk">
+            <figcaption>Desktop · 1440<a href="ui-library/list-row-1440.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/list-row-1440.webp" width="1440" height="697" loading="lazy" alt="ListRow at 1440px" /></div>
+          </figure>
+        </div>
+        <p class="uil-code">Code: <code>gutguard-ui/components/ui/ListRow.tsx</code> <code>gutguard-ui/showcase/examples/ListRow.tsx</code></p>
+      </section>
+
+      <section class="section" id="uil-icon-row">
+        <div class="section-head"><h2>IconRow</h2><span>UI Library · Components</span></div>
+        <p class="note">Icon, title and a line of text. Benefit lists, a panel heading like “Guard someone”, and the check rows in “What's inside”.</p>
+        <div class="uil-meta"><span>g-get</span><span>l-guard</span><span>s-inside</span></div>
+        <div class="uil-shots">
+          <figure class="uil-shot uil-phone">
+            <figcaption>Phone · 390<a href="ui-library/icon-row-390.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/icon-row-390.webp" width="390" height="748" loading="lazy" alt="IconRow at 390px" /></div>
+          </figure>
+          <figure class="uil-shot uil-desk">
+            <figcaption>Desktop · 1440<a href="ui-library/icon-row-1440.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/icon-row-1440.webp" width="1440" height="744" loading="lazy" alt="IconRow at 1440px" /></div>
+          </figure>
+        </div>
+        <p class="uil-code">Code: <code>gutguard-ui/components/ui/IconRow.tsx</code> <code>gutguard-ui/showcase/examples/IconRow.tsx</code></p>
+      </section>
+
+      <section class="section" id="uil-top-bar">
+        <div class="section-head"><h2>TopBar</h2><span>UI Library · Shell</span></div>
+        <p class="note">Sticky bar at the top of every page. site is the website and shop menu (page name and menu button on phone, links and the dark button from md); app is the Lifestyle bar with a right-hand slot for E-Points and icon buttons.</p>
+        <div class="uil-meta"><span>w-nav</span><span>l-nav</span><span>g-nav</span></div>
+        <div class="uil-shots">
+          <figure class="uil-shot uil-phone">
+            <figcaption>Phone · 390<a href="ui-library/top-bar-390.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/top-bar-390.webp" width="390" height="315" loading="lazy" alt="TopBar at 390px" /></div>
+          </figure>
+          <figure class="uil-shot uil-desk">
+            <figcaption>Desktop · 1440<a href="ui-library/top-bar-1440.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/top-bar-1440.webp" width="1440" height="314" loading="lazy" alt="TopBar at 1440px" /></div>
+          </figure>
+        </div>
+        <p class="uil-code">Code: <code>gutguard-ui/components/shell/TopBar.tsx</code> <code>gutguard-ui/showcase/examples/TopBar.tsx</code></p>
+      </section>
+
+      <section class="section" id="uil-footer">
+        <div class="section-head"><h2>Footer</h2><span>UI Library · Shell</span></div>
+        <p class="note">End of every site page: site map with the current page marked, logo and tagline, footer links and legal lines.</p>
+        <div class="uil-meta"><span>w-footer</span></div>
+        <div class="uil-shots">
+          <figure class="uil-shot uil-phone">
+            <figcaption>Phone · 390<a href="ui-library/footer-390.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/footer-390.webp" width="390" height="851" loading="lazy" alt="Footer at 390px" /></div>
+          </figure>
+          <figure class="uil-shot uil-desk">
+            <figcaption>Desktop · 1440<a href="ui-library/footer-1440.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/footer-1440.webp" width="1440" height="619" loading="lazy" alt="Footer at 1440px" /></div>
+          </figure>
+        </div>
+        <p class="uil-code">Code: <code>gutguard-ui/components/shell/Footer.tsx</code> <code>gutguard-ui/showcase/examples/Footer.tsx</code></p>
+      </section>
+
+      <section class="section" id="uil-bottom-bar">
+        <div class="section-head"><h2>BottomBar</h2><span>UI Library · Shell</span></div>
+        <p class="note">Bar pinned to the bottom with the main action: the site offer bar, the phone buy bar, and the sticky pay button at the foot of the checkout sheet.</p>
+        <div class="uil-meta"><span>w-offer</span><span>s-bar</span><span>s-paybtn</span></div>
+        <div class="uil-shots">
+          <figure class="uil-shot uil-phone">
+            <figcaption>Phone · 390<a href="ui-library/bottom-bar-390.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/bottom-bar-390.webp" width="390" height="560" loading="lazy" alt="BottomBar at 390px" /></div>
+          </figure>
+          <figure class="uil-shot uil-desk">
+            <figcaption>Desktop · 1440<a href="ui-library/bottom-bar-1440.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/bottom-bar-1440.webp" width="1440" height="560" loading="lazy" alt="BottomBar at 1440px" /></div>
+          </figure>
+        </div>
+        <p class="uil-code">Code: <code>gutguard-ui/components/shell/BottomBar.tsx</code> <code>gutguard-ui/showcase/examples/BottomBar.tsx</code></p>
+      </section>
+
+      <section class="section" id="uil-empty-state">
+        <div class="section-head"><h2>EmptyState</h2><span>UI Library · Overlays & states</span></div>
+        <p class="note">Nothing here yet: a centred line inside a sheet, or a dashed coming-soon box with a badge.</p>
+        <div class="uil-meta"><span>s-basket</span><span>w-doors</span></div>
+        <div class="uil-shots">
+          <figure class="uil-shot uil-phone">
+            <figcaption>Phone · 390<a href="ui-library/empty-state-390.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/empty-state-390.webp" width="390" height="434" loading="lazy" alt="EmptyState at 390px" /></div>
+          </figure>
+          <figure class="uil-shot uil-desk">
+            <figcaption>Desktop · 1440<a href="ui-library/empty-state-1440.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/empty-state-1440.webp" width="1440" height="400" loading="lazy" alt="EmptyState at 1440px" /></div>
+          </figure>
+        </div>
+        <p class="uil-code">Code: <code>gutguard-ui/components/ui/EmptyState.tsx</code> <code>gutguard-ui/showcase/examples/EmptyState.tsx</code></p>
+      </section>
+
+      <section class="section" id="uil-success-state">
+        <div class="section-head"><h2>SuccessState</h2><span>UI Library · Overlays & states</span></div>
+        <p class="note">Confirmation after an action: check circle, title, one line, any content (mini card, next steps), then actions.</p>
+        <div class="uil-meta"><span>s-done</span></div>
+        <div class="uil-shots">
+          <figure class="uil-shot uil-phone">
+            <figcaption>Phone · 390<a href="ui-library/success-state-390.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/success-state-390.webp" width="390" height="805" loading="lazy" alt="SuccessState at 390px" /></div>
+          </figure>
+          <figure class="uil-shot uil-desk">
+            <figcaption>Desktop · 1440<a href="ui-library/success-state-1440.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/success-state-1440.webp" width="1440" height="819" loading="lazy" alt="SuccessState at 1440px" /></div>
+          </figure>
+        </div>
+        <p class="uil-code">Code: <code>gutguard-ui/components/ui/SuccessState.tsx</code> <code>gutguard-ui/showcase/examples/SuccessState.tsx</code></p>
+      </section>
+
+      <section class="section" id="uil-sheet">
+        <div class="section-head"><h2>Sheet</h2><span>UI Library · Overlays & states</span></div>
+        <p class="note">Modal sheet for the basket, checkout, what's inside and the Lifestyle plan, settings and E-Points sheets. Bottom sheet on phone; from md the shop sheet floats at the bottom right and the Lifestyle sheet centres.</p>
+        <div class="uil-meta"><span>s-basket</span><span>s-co</span><span>s-inside</span><span>s-done</span><span>l-plan-sheet</span><span>l-settings</span><span>l-points</span><span>l-card</span></div>
+        <div class="uil-shots">
+          <figure class="uil-shot uil-phone">
+            <figcaption>Phone · 390<a href="ui-library/sheet-390.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/sheet-390.webp" width="390" height="720" loading="lazy" alt="Sheet at 390px" /></div>
+          </figure>
+          <figure class="uil-shot uil-desk">
+            <figcaption>Desktop · 1440<a href="ui-library/sheet-1440.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/sheet-1440.webp" width="1440" height="720" loading="lazy" alt="Sheet at 1440px" /></div>
+          </figure>
+        </div>
+        <p class="uil-code">Code: <code>gutguard-ui/components/ui/Sheet.tsx</code> <code>gutguard-ui/showcase/examples/Sheet.tsx</code></p>
+      </section>
+
+      <section class="section" id="uil-mobile-menu">
+        <div class="section-head"><h2>MobileMenu</h2><span>UI Library · Overlays & states</span></div>
+        <p class="note">Full-screen phone menu opened from the TopBar menu button: numbered links, the main button and the log-in line.</p>
+        <div class="uil-meta"><span>w-menu</span></div>
+        <div class="uil-shots">
+          <figure class="uil-shot uil-phone">
+            <figcaption>Phone · 390<a href="ui-library/mobile-menu-390.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/mobile-menu-390.webp" width="390" height="760" loading="lazy" alt="MobileMenu at 390px" /></div>
+          </figure>
+        </div>
+        <p class="uil-code">Code: <code>gutguard-ui/components/ui/MobileMenu.tsx</code> <code>gutguard-ui/showcase/examples/MobileMenu.tsx</code></p>
+      </section>
+
+      <section class="section" id="uil-nutrition-facts">
+        <div class="section-head"><h2>NutritionFacts</h2><span>UI Library · Patterns</span></div>
+        <p class="note">The Supplement Facts label panel, filled from data: serving, actives with amounts, macros line and footnote.</p>
+        <div class="uil-meta"><span>s-facts</span><span>s-inside</span></div>
+        <div class="uil-shots">
+          <figure class="uil-shot uil-phone">
+            <figcaption>Phone · 390<a href="ui-library/nutrition-facts-390.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/nutrition-facts-390.webp" width="390" height="395" loading="lazy" alt="NutritionFacts at 390px" /></div>
+          </figure>
+          <figure class="uil-shot uil-desk">
+            <figcaption>Desktop · 1440<a href="ui-library/nutrition-facts-1440.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/nutrition-facts-1440.webp" width="1440" height="427" loading="lazy" alt="NutritionFacts at 1440px" /></div>
+          </figure>
+        </div>
+        <p class="uil-code">Code: <code>gutguard-ui/components/patterns/NutritionFacts.tsx</code> <code>gutguard-ui/showcase/examples/NutritionFacts.tsx</code></p>
+      </section>
+
+      <section class="section" id="uil-product-header">
+        <div class="section-head"><h2>ProductHeader</h2><span>UI Library · Patterns</span></div>
+        <p class="note">Top of the shop: product art, name and tagline with the basket button on phone, or a mono label + basket inside the desktop buy card.</p>
+        <div class="uil-meta"><span>s-top</span><span>s-card</span></div>
+        <div class="uil-shots">
+          <figure class="uil-shot uil-phone">
+            <figcaption>Phone · 390<a href="ui-library/product-header-390.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/product-header-390.webp" width="390" height="345" loading="lazy" alt="ProductHeader at 390px" /></div>
+          </figure>
+          <figure class="uil-shot uil-desk">
+            <figcaption>Desktop · 1440<a href="ui-library/product-header-1440.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/product-header-1440.webp" width="1440" height="377" loading="lazy" alt="ProductHeader at 1440px" /></div>
+          </figure>
+        </div>
+        <p class="uil-code">Code: <code>gutguard-ui/components/patterns/ProductHeader.tsx</code> <code>gutguard-ui/showcase/examples/ProductHeader.tsx</code></p>
+      </section>
+
+      <section class="section" id="uil-person-row">
+        <div class="section-head"><h2>PersonRow</h2><span>UI Library · Patterns</span></div>
+        <p class="note">A person in a paper box: family plan row with Manage, team member with status and caps left, or the sponsor who invited you.</p>
+        <div class="uil-meta"><span>l-family</span><span>l-team</span><span>g-sponsor</span></div>
+        <div class="uil-shots">
+          <figure class="uil-shot uil-phone">
+            <figcaption>Phone · 390<a href="ui-library/person-row-390.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/person-row-390.webp" width="390" height="461" loading="lazy" alt="PersonRow at 390px" /></div>
+          </figure>
+          <figure class="uil-shot uil-desk">
+            <figcaption>Desktop · 1440<a href="ui-library/person-row-1440.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/person-row-1440.webp" width="1440" height="474" loading="lazy" alt="PersonRow at 1440px" /></div>
+          </figure>
+        </div>
+        <p class="uil-code">Code: <code>gutguard-ui/components/patterns/PersonRow.tsx</code> <code>gutguard-ui/showcase/examples/PersonRow.tsx</code></p>
+      </section>
+
+      <section class="section" id="uil-member-card">
+        <div class="section-head"><h2>MemberCard</h2><span>UI Library · Patterns</span></div>
+        <p class="note">The Gutguard Lifestyle card with rank, name, number and E-Points. Full size flips to a QR on tap; mini is the small card on the shop Done screen.</p>
+        <div class="uil-meta"><span>l-bigcard</span><span>l-card-desk</span><span>l-card</span><span>g-card</span><span>s-minicard</span></div>
+        <div class="uil-shots">
+          <figure class="uil-shot uil-phone">
+            <figcaption>Phone · 390<a href="ui-library/member-card-390.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/member-card-390.webp" width="390" height="1132" loading="lazy" alt="MemberCard at 390px" /></div>
+          </figure>
+          <figure class="uil-shot uil-desk">
+            <figcaption>Desktop · 1440<a href="ui-library/member-card-1440.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/member-card-1440.webp" width="1440" height="757" loading="lazy" alt="MemberCard at 1440px" /></div>
+          </figure>
+        </div>
+        <p class="uil-code">Code: <code>gutguard-ui/components/patterns/MemberCard.tsx</code> <code>gutguard-ui/showcase/examples/MemberCard.tsx</code></p>
+      </section>
+
+      <section class="section" id="uil-dose-row">
+        <div class="section-head"><h2>DoseRow</h2><span>UI Library · Patterns</span></div>
+        <p class="note">One dose (Reveille, Midday, Taps) in the Lifestyle day list with photo and Done or Undo, or in Settings with a capsule stepper and reminder time.</p>
+        <div class="uil-meta"><span>l-dose-next</span><span>l-dose-done</span><span>l-settings</span></div>
+        <div class="uil-shots">
+          <figure class="uil-shot uil-phone">
+            <figcaption>Phone · 390<a href="ui-library/dose-row-390.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/dose-row-390.webp" width="390" height="854" loading="lazy" alt="DoseRow at 390px" /></div>
+          </figure>
+          <figure class="uil-shot uil-desk">
+            <figcaption>Desktop · 1440<a href="ui-library/dose-row-1440.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/dose-row-1440.webp" width="1440" height="492" loading="lazy" alt="DoseRow at 1440px" /></div>
+          </figure>
+        </div>
+        <p class="uil-code">Code: <code>gutguard-ui/components/patterns/DoseRow.tsx</code> <code>gutguard-ui/showcase/examples/DoseRow.tsx</code></p>
+      </section>
+
+      <section class="section" id="uil-offer-card">
+        <div class="section-head"><h2>OfferCard</h2><span>UI Library · Patterns</span></div>
+        <p class="note">The 5-Night Watch and Gut Guardian offer. Band is the dark site band with price and button; box is the Lifestyle paper box on the landing and the member's first step.</p>
+        <div class="uil-meta"><span>w-trialband</span><span>g-hero</span><span>g-offer</span><span>l-firststep</span></div>
+        <div class="uil-shots">
+          <figure class="uil-shot uil-phone">
+            <figcaption>Phone · 390<a href="ui-library/offer-card-390.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/offer-card-390.webp" width="390" height="1530" loading="lazy" alt="OfferCard at 390px" /></div>
+          </figure>
+          <figure class="uil-shot uil-desk">
+            <figcaption>Desktop · 1440<a href="ui-library/offer-card-1440.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/offer-card-1440.webp" width="1440" height="820" loading="lazy" alt="OfferCard at 1440px" /></div>
+          </figure>
+        </div>
+        <p class="uil-code">Code: <code>gutguard-ui/components/patterns/OfferCard.tsx</code> <code>gutguard-ui/showcase/examples/OfferCard.tsx</code></p>
+      </section>
+
+      <section class="section" id="uil-adherence-calendar">
+        <div class="section-head"><h2>AdherenceCalendar</h2><span>UI Library · Patterns</span></div>
+        <p class="note">Month grid on My Story showing which days the doses were taken, with photo marks, the today ring and a legend.</p>
+        <div class="uil-meta"><span>l-story</span></div>
+        <div class="uil-shots">
+          <figure class="uil-shot uil-phone">
+            <figcaption>Phone · 390<a href="ui-library/adherence-calendar-390.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/adherence-calendar-390.webp" width="390" height="420" loading="lazy" alt="AdherenceCalendar at 390px" /></div>
+          </figure>
+          <figure class="uil-shot uil-desk">
+            <figcaption>Desktop · 1440<a href="ui-library/adherence-calendar-1440.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/adherence-calendar-1440.webp" width="1440" height="497" loading="lazy" alt="AdherenceCalendar at 1440px" /></div>
+          </figure>
+        </div>
+        <p class="uil-code">Code: <code>gutguard-ui/components/patterns/AdherenceCalendar.tsx</code> <code>gutguard-ui/showcase/examples/AdherenceCalendar.tsx</code></p>
+      </section>
+
+      <section class="section" id="uil-step-progress">
+        <div class="section-head"><h2>StepProgress</h2><span>UI Library · Patterns</span></div>
+        <p class="note">Segmented progress bar at the top of the Lifestyle sign-up (Card, Code, Start).</p>
+        <div class="uil-meta"><span>g-signup</span><span>g-code</span><span>g-first</span></div>
+        <div class="uil-shots">
+          <figure class="uil-shot uil-phone">
+            <figcaption>Phone · 390<a href="ui-library/step-progress-390.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/step-progress-390.webp" width="390" height="152" loading="lazy" alt="StepProgress at 390px" /></div>
+          </figure>
+          <figure class="uil-shot uil-desk">
+            <figcaption>Desktop · 1440<a href="ui-library/step-progress-1440.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/step-progress-1440.webp" width="1440" height="184" loading="lazy" alt="StepProgress at 1440px" /></div>
+          </figure>
+        </div>
+        <p class="uil-code">Code: <code>gutguard-ui/components/patterns/StepProgress.tsx</code> <code>gutguard-ui/showcase/examples/StepProgress.tsx</code></p>
+      </section>
+
+      <section class="section" id="uil-hero">
+        <div class="section-head"><h2>Hero</h2><span>UI Library · Sections</span></div>
+        <p class="note">The Home opening section: eyebrow, serif headline, lead, buttons and a proof list beside a graded portrait with an overlapping card. Stacks on phone.</p>
+        <div class="uil-meta"><span>w-hero</span><span>w-hero-actions</span></div>
+        <div class="uil-shots">
+          <figure class="uil-shot uil-phone">
+            <figcaption>Phone · 390<a href="ui-library/hero-390.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/hero-390.webp" width="390" height="1449" loading="lazy" alt="Hero at 390px" /></div>
+          </figure>
+          <figure class="uil-shot uil-desk">
+            <figcaption>Desktop · 1440<a href="ui-library/hero-1440.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/hero-1440.webp" width="1440" height="885" loading="lazy" alt="Hero at 1440px" /></div>
+          </figure>
+        </div>
+        <p class="uil-code">Code: <code>gutguard-ui/components/sections/Hero.tsx</code> <code>gutguard-ui/showcase/examples/Hero.tsx</code></p>
+      </section>
+
+      <section class="section" id="uil-blood-scan-readout">
+        <div class="section-head"><h2>BloodScanReadout</h2><span>UI Library · Sections</span></div>
+        <p class="note">The sample Blood Scan card from the hero: three readings with the main one in heat, two bars and a caption. Pass it as the Hero's visual.</p>
+        <div class="uil-meta"><span>w-hero</span></div>
+        <div class="uil-shots">
+          <figure class="uil-shot uil-phone">
+            <figcaption>Phone · 390<a href="ui-library/blood-scan-readout-390.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/blood-scan-readout-390.webp" width="390" height="296" loading="lazy" alt="BloodScanReadout at 390px" /></div>
+          </figure>
+          <figure class="uil-shot uil-desk">
+            <figcaption>Desktop · 1440<a href="ui-library/blood-scan-readout-1440.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/blood-scan-readout-1440.webp" width="1440" height="328" loading="lazy" alt="BloodScanReadout at 1440px" /></div>
+          </figure>
+        </div>
+        <p class="uil-code">Code: <code>gutguard-ui/components/sections/BloodScanReadout.tsx</code> <code>gutguard-ui/showcase/examples/BloodScanReadout.tsx</code></p>
+      </section>
+
+      <section class="section" id="uil-miage-block">
+        <div class="section-head"><h2>MiAgeBlock</h2><span>UI Library · Sections</span></div>
+        <p class="note">The big MiAge number with its explanation, beside the two readings it is built on. Sits on the dark slate band.</p>
+        <div class="uil-meta"><span>w-miage</span></div>
+        <div class="uil-shots">
+          <figure class="uil-shot uil-phone">
+            <figcaption>Phone · 390<a href="ui-library/miage-block-390.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/miage-block-390.webp" width="390" height="944" loading="lazy" alt="MiAgeBlock at 390px" /></div>
+          </figure>
+          <figure class="uil-shot uil-desk">
+            <figcaption>Desktop · 1440<a href="ui-library/miage-block-1440.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/miage-block-1440.webp" width="1440" height="524" loading="lazy" alt="MiAgeBlock at 1440px" /></div>
+          </figure>
+        </div>
+        <p class="uil-code">Code: <code>gutguard-ui/components/sections/MiAgeBlock.tsx</code> <code>gutguard-ui/showcase/examples/MiAgeBlock.tsx</code></p>
+      </section>
+
+      <section class="section" id="uil-trajectory-chart">
+        <div class="section-head"><h2>TrajectoryChart</h2><span>UI Library · Sections</span></div>
+        <p class="note">MiAge across the scans as a line chart with the calendar-age line, the overall change and day labels. Data-driven; sits on the dark slate band.</p>
+        <div class="uil-meta"><span>w-traj</span></div>
+        <div class="uil-shots">
+          <figure class="uil-shot uil-phone">
+            <figcaption>Phone · 390<a href="ui-library/trajectory-chart-390.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/trajectory-chart-390.webp" width="390" height="724" loading="lazy" alt="TrajectoryChart at 390px" /></div>
+          </figure>
+          <figure class="uil-shot uil-desk">
+            <figcaption>Desktop · 1440<a href="ui-library/trajectory-chart-1440.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/trajectory-chart-1440.webp" width="1440" height="632" loading="lazy" alt="TrajectoryChart at 1440px" /></div>
+          </figure>
+        </div>
+        <p class="uil-code">Code: <code>gutguard-ui/components/sections/TrajectoryChart.tsx</code> <code>gutguard-ui/showcase/examples/TrajectoryChart.tsx</code></p>
+      </section>
+
+      <section class="section" id="uil-story-of-hope">
+        <div class="section-head"><h2>StoryOfHope</h2><span>UI Library · Sections</span></div>
+        <p class="note">A member's story: dark portrait column with their one-line quote, beside what they felt week by week and a caveat.</p>
+        <div class="uil-meta"><span>w-soh</span></div>
+        <div class="uil-shots">
+          <figure class="uil-shot uil-phone">
+            <figcaption>Phone · 390<a href="ui-library/story-of-hope-390.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/story-of-hope-390.webp" width="390" height="1108" loading="lazy" alt="StoryOfHope at 390px" /></div>
+          </figure>
+          <figure class="uil-shot uil-desk">
+            <figcaption>Desktop · 1440<a href="ui-library/story-of-hope-1440.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/story-of-hope-1440.webp" width="1440" height="610" loading="lazy" alt="StoryOfHope at 1440px" /></div>
+          </figure>
+        </div>
+        <p class="uil-code">Code: <code>gutguard-ui/components/sections/StoryOfHope.tsx</code> <code>gutguard-ui/showcase/examples/StoryOfHope.tsx</code></p>
+      </section>
+
+      <section class="section" id="uil-protocol-steps">
+        <div class="section-head"><h2>ProtocolSteps</h2><span>UI Library · Sections</span></div>
+        <p class="note">SynBIOTIC+ capsule illustration beside the three roman-numeral protocol steps.</p>
+        <div class="uil-meta"><span>w-proto</span></div>
+        <div class="uil-shots">
+          <figure class="uil-shot uil-phone">
+            <figcaption>Phone · 390<a href="ui-library/protocol-steps-390.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/protocol-steps-390.webp" width="390" height="882" loading="lazy" alt="ProtocolSteps at 390px" /></div>
+          </figure>
+          <figure class="uil-shot uil-desk">
+            <figcaption>Desktop · 1440<a href="ui-library/protocol-steps-1440.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/protocol-steps-1440.webp" width="1440" height="662" loading="lazy" alt="ProtocolSteps at 1440px" /></div>
+          </figure>
+        </div>
+        <p class="uil-code">Code: <code>gutguard-ui/components/sections/ProtocolSteps.tsx</code> <code>gutguard-ui/components/ui/Timeline.tsx</code> <code>gutguard-ui/showcase/examples/ProtocolSteps.tsx</code></p>
+      </section>
+
+      <section class="section" id="uil-member-greeting">
+        <div class="section-head"><h2>MemberGreeting</h2><span>UI Library · Sections</span></div>
+        <p class="note">Top of My Health: greeting, rank and date, then a card button and E-Points tile on phone, or the full MemberCard with its caption from md.</p>
+        <div class="uil-meta"><span>l-greet</span><span>l-card-desk</span></div>
+        <div class="uil-shots">
+          <figure class="uil-shot uil-phone">
+            <figcaption>Phone · 390<a href="ui-library/member-greeting-390.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/member-greeting-390.webp" width="390" height="203" loading="lazy" alt="MemberGreeting at 390px" /></div>
+          </figure>
+          <figure class="uil-shot uil-desk">
+            <figcaption>Desktop · 1440<a href="ui-library/member-greeting-1440.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/member-greeting-1440.webp" width="1440" height="477" loading="lazy" alt="MemberGreeting at 1440px" /></div>
+          </figure>
+        </div>
+        <p class="uil-code">Code: <code>gutguard-ui/components/sections/MemberGreeting.tsx</code> <code>gutguard-ui/showcase/examples/MemberGreeting.tsx</code></p>
+      </section>
+
+      <section class="section" id="uil-business-tools">
+        <div class="section-head"><h2>BusinessTools</h2><span>UI Library · Sections</span></div>
+        <p class="note">Collapsed &quot;Business tools&quot; box for builders on My Health, with the GEMA, Academy and GG Verse tiles. Opens to whatever you pass as children.</p>
+        <div class="uil-meta"><span>l-tools</span></div>
+        <div class="uil-shots">
+          <figure class="uil-shot uil-phone">
+            <figcaption>Phone · 390<a href="ui-library/business-tools-390.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/business-tools-390.webp" width="390" height="350" loading="lazy" alt="BusinessTools at 390px" /></div>
+          </figure>
+          <figure class="uil-shot uil-desk">
+            <figcaption>Desktop · 1440<a href="ui-library/business-tools-1440.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/business-tools-1440.webp" width="1440" height="382" loading="lazy" alt="BusinessTools at 1440px" /></div>
+          </figure>
+        </div>
+        <p class="uil-code">Code: <code>gutguard-ui/components/sections/BusinessTools.tsx</code> <code>gutguard-ui/showcase/examples/BusinessTools.tsx</code></p>
+      </section>
+
+      <section class="section" id="uil-protocol-journey">
+        <div class="section-head"><h2>ProtocolJourney</h2><span>UI Library · Sections</span></div>
+        <p class="note">Top card of My Story: the 90-Day Protocol day count, capsule art, phase bar and chips, and the next BioScan line.</p>
+        <div class="uil-meta"><span>l-story</span></div>
+        <div class="uil-shots">
+          <figure class="uil-shot uil-phone">
+            <figcaption>Phone · 390<a href="ui-library/protocol-journey-390.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/protocol-journey-390.webp" width="390" height="682" loading="lazy" alt="ProtocolJourney at 390px" /></div>
+          </figure>
+          <figure class="uil-shot uil-desk">
+            <figcaption>Desktop · 1440<a href="ui-library/protocol-journey-1440.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/protocol-journey-1440.webp" width="1440" height="382" loading="lazy" alt="ProtocolJourney at 1440px" /></div>
+          </figure>
+        </div>
+        <p class="uil-code">Code: <code>gutguard-ui/components/sections/ProtocolJourney.tsx</code> <code>gutguard-ui/showcase/examples/ProtocolJourney.tsx</code></p>
+      </section>
+
+      <section class="section" id="uil-auth-panel">
+        <div class="section-head"><h2>AuthPanel</h2><span>UI Library · Sections</span></div>
+        <p class="note">Two-column layout of the Lifestyle landing and sign-up: mono intro and member card on the left, a labelled form or offer on the right. Stacked on phone; from md one column stays sticky.</p>
+        <div class="uil-meta"><span>g-signup</span><span>g-first</span></div>
+        <div class="uil-shots">
+          <figure class="uil-shot uil-phone">
+            <figcaption>Phone · 390<a href="ui-library/auth-panel-390.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/auth-panel-390.webp" width="390" height="704" loading="lazy" alt="AuthPanel at 390px" /></div>
+          </figure>
+          <figure class="uil-shot uil-desk">
+            <figcaption>Desktop · 1440<a href="ui-library/auth-panel-1440.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/auth-panel-1440.webp" width="1440" height="444" loading="lazy" alt="AuthPanel at 1440px" /></div>
+          </figure>
+        </div>
+        <p class="uil-code">Code: <code>gutguard-ui/components/sections/AuthPanel.tsx</code> <code>gutguard-ui/showcase/examples/AuthPanel.tsx</code></p>
+      </section>
+
+      <section class="section" id="uil-home-screen">
+        <div class="section-head"><h2>Website: Home</h2><span>UI Library · Screens</span></div>
+        <p class="note">A condensed Home page: TopBar, Hero with BloodScanReadout, Why now (SectionHeading, StatGroup, Cards, Quote), the dark MiAge band with TrajectoryChart, StoryOfHope, ProtocolSteps, OfferCard band, trust strip, coming-soon box, Footer and the offer BottomBar.</p>
+        <div class="uil-meta"><span>w-nav</span><span>w-menu</span><span>w-hero</span><span>w-sechead</span><span>w-stats</span><span>w-symptoms</span><span>w-review</span><span>w-miage</span><span>w-traj</span><span>w-soh</span><span>w-proto</span><span>w-trialband</span><span>w-trust</span><span>w-doors</span><span>w-footer</span><span>w-offer</span></div>
+        <div class="uil-shots">
+          <figure class="uil-shot uil-phone">
+            <figcaption>Phone · 390<a href="ui-library/home-screen-390.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/home-screen-390.webp" width="390" height="9564" loading="lazy" alt="Website: Home at 390px" /></div>
+          </figure>
+          <figure class="uil-shot uil-desk">
+            <figcaption>Desktop · 1440<a href="ui-library/home-screen-1440.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/home-screen-1440.webp" width="1440" height="6853" loading="lazy" alt="Website: Home at 1440px" /></div>
+          </figure>
+        </div>
+        <p class="uil-code">Code: <code>gutguard-ui/components/sections/Hero.tsx</code> <code>gutguard-ui/components/sections/BloodScanReadout.tsx</code> <code>gutguard-ui/components/sections/MiAgeBlock.tsx</code> <code>gutguard-ui/components/sections/TrajectoryChart.tsx</code> <code>gutguard-ui/components/sections/StoryOfHope.tsx</code> <code>gutguard-ui/components/sections/ProtocolSteps.tsx</code> <code>gutguard-ui/showcase/examples/HomeScreen.tsx</code></p>
+      </section>
+
+      <section class="section" id="uil-shop-screen">
+        <div class="section-head"><h2>Shop: choose a pack</h2><span>UI Library · Screens</span></div>
+        <p class="note">TopBar, ProductHeader, SegmentedControl, OptionCard, ChoiceChip, StatGroup, Note, TrustLine and the buy button. Phone uses the fixed BottomBar; desktop puts the choice in a card beside What's inside.</p>
+        <div class="uil-meta"><span>s-top</span><span>s-card</span><span>s-toggle</span><span>s-watch</span><span>s-trials</span><span>s-chips</span><span>s-stats</span><span>s-sub</span><span>s-trustline</span><span>s-bar</span><span>s-facts</span><span>s-proof</span></div>
+        <div class="uil-shots">
+          <figure class="uil-shot uil-phone">
+            <figcaption>Phone · 390<a href="ui-library/shop-screen-390.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/shop-screen-390.webp" width="390" height="722" loading="lazy" alt="Shop: choose a pack at 390px" /></div>
+          </figure>
+          <figure class="uil-shot uil-desk">
+            <figcaption>Desktop · 1440<a href="ui-library/shop-screen-1440.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/shop-screen-1440.webp" width="1440" height="759" loading="lazy" alt="Shop: choose a pack at 1440px" /></div>
+          </figure>
+        </div>
+        <p class="uil-code">Code: <code>gutguard-ui/showcase/examples/ShopScreen.tsx</code></p>
+      </section>
+
+      <section class="section" id="uil-checkout-screen">
+        <div class="section-head"><h2>Checkout and Done</h2><span>UI Library · Screens</span></div>
+        <p class="note">The checkout Sheet: LineItem, SegmentedControl, TextField, Combobox, OptionCard, Note, OrderTotals and the sticky pay bar. Pay shows the Done screen (SuccessState, mini MemberCard, Timeline).</p>
+        <div class="uil-meta"><span>s-co</span><span>s-for</span><span>s-mobile</span><span>s-field</span><span>s-city</span><span>s-pays</span><span>s-tots</span><span>s-paybtn</span><span>s-done</span><span>s-minicard</span></div>
+        <div class="uil-shots">
+          <figure class="uil-shot uil-phone">
+            <figcaption>Phone · 390<a href="ui-library/checkout-screen-390.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/checkout-screen-390.webp" width="390" height="900" loading="lazy" alt="Checkout and Done at 390px" /></div>
+          </figure>
+          <figure class="uil-shot uil-desk">
+            <figcaption>Desktop · 1440<a href="ui-library/checkout-screen-1440.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/checkout-screen-1440.webp" width="1440" height="900" loading="lazy" alt="Checkout and Done at 1440px" /></div>
+          </figure>
+        </div>
+        <p class="uil-code">Code: <code>gutguard-ui/showcase/examples/CheckoutScreen.tsx</code></p>
+      </section>
+
+      <section class="section" id="uil-lifestyle-screen">
+        <div class="section-head"><h2>Lifestyle: My Health</h2><span>UI Library · Screens</span></div>
+        <p class="note">The member home: app TopBar with PointsPill, underline Tabs, MemberGreeting, the 5-Night Watch card, DoseRow, the boxed StatGroup and My plan. One column on phone (My plan after the stats), two from md.</p>
+        <div class="uil-meta"><span>l-nav</span><span>l-tabs</span><span>l-greet</span><span>l-watch</span><span>l-bigcard</span><span>l-plan</span><span>l-family</span><span>l-guard</span><span>l-dose-next</span><span>l-stats</span></div>
+        <div class="uil-shots">
+          <figure class="uil-shot uil-phone">
+            <figcaption>Phone · 390<a href="ui-library/lifestyle-screen-390.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/lifestyle-screen-390.webp" width="390" height="1288" loading="lazy" alt="Lifestyle: My Health at 390px" /></div>
+          </figure>
+          <figure class="uil-shot uil-desk">
+            <figcaption>Desktop · 1440<a href="ui-library/lifestyle-screen-1440.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/lifestyle-screen-1440.webp" width="1440" height="1130" loading="lazy" alt="Lifestyle: My Health at 1440px" /></div>
+          </figure>
+        </div>
+        <p class="uil-code">Code: <code>gutguard-ui/showcase/examples/LifestyleScreen.tsx</code></p>
+      </section>
+
+      <section class="section" id="uil-lifestyle-story-screen">
+        <div class="section-head"><h2>Lifestyle: My Story</h2><span>UI Library · Screens</span></div>
+        <p class="note">ProtocolJourney, boxed StatGroup, AdherenceCalendar and the weekly feeling check on the left; Share my Story of Hope and the Stories of Hope list on the right.</p>
+        <div class="uil-meta"><span>l-nav</span><span>l-tabs</span><span>l-story</span></div>
+        <div class="uil-shots">
+          <figure class="uil-shot uil-phone">
+            <figcaption>Phone · 390<a href="ui-library/lifestyle-story-screen-390.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/lifestyle-story-screen-390.webp" width="390" height="2430" loading="lazy" alt="Lifestyle: My Story at 390px" /></div>
+          </figure>
+          <figure class="uil-shot uil-desk">
+            <figcaption>Desktop · 1440<a href="ui-library/lifestyle-story-screen-1440.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/lifestyle-story-screen-1440.webp" width="1440" height="1306" loading="lazy" alt="Lifestyle: My Story at 1440px" /></div>
+          </figure>
+        </div>
+        <p class="uil-code">Code: <code>gutguard-ui/components/sections/ProtocolJourney.tsx</code> <code>gutguard-ui/showcase/examples/LifestyleStoryScreen.tsx</code></p>
+      </section>
+
+      <section class="section" id="uil-lifestyle-team-screen">
+        <div class="section-head"><h2>Lifestyle: My Team</h2><span>UI Library · Screens</span></div>
+        <p class="note">The builder's team tab: rank, boxed StatGroup, then team PersonRows with status, caps left, refill pill, last 7 days and Follow up.</p>
+        <div class="uil-meta"><span>l-nav</span><span>l-tabs</span><span>l-team</span></div>
+        <div class="uil-shots">
+          <figure class="uil-shot uil-phone">
+            <figcaption>Phone · 390<a href="ui-library/lifestyle-team-screen-390.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/lifestyle-team-screen-390.webp" width="390" height="1279" loading="lazy" alt="Lifestyle: My Team at 390px" /></div>
+          </figure>
+          <figure class="uil-shot uil-desk">
+            <figcaption>Desktop · 1440<a href="ui-library/lifestyle-team-screen-1440.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/lifestyle-team-screen-1440.webp" width="1440" height="1083" loading="lazy" alt="Lifestyle: My Team at 1440px" /></div>
+          </figure>
+        </div>
+        <p class="uil-code">Code: <code>gutguard-ui/showcase/examples/LifestyleTeamScreen.tsx</code></p>
+      </section>
+
+      <section class="section" id="uil-lifestyle-sheets-screen">
+        <div class="section-head"><h2>Lifestyle: sheets</h2><span>UI Library · Screens</span></div>
+        <p class="note">The three Lifestyle sheets: Manage my plan (ListRows), Settings (DoseRow settings and SegmentedControls) and E-Points (rewards with Redeem).</p>
+        <div class="uil-meta"><span>l-plan-sheet</span><span>l-settings</span><span>l-points</span></div>
+        <div class="uil-shots">
+          <figure class="uil-shot uil-phone">
+            <figcaption>Phone · 390<a href="ui-library/lifestyle-sheets-screen-390.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/lifestyle-sheets-screen-390.webp" width="390" height="820" loading="lazy" alt="Lifestyle: sheets at 390px" /></div>
+          </figure>
+          <figure class="uil-shot uil-desk">
+            <figcaption>Desktop · 1440<a href="ui-library/lifestyle-sheets-screen-1440.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/lifestyle-sheets-screen-1440.webp" width="1440" height="820" loading="lazy" alt="Lifestyle: sheets at 1440px" /></div>
+          </figure>
+        </div>
+        <p class="uil-code">Code: <code>gutguard-ui/showcase/examples/LifestyleSheetsScreen.tsx</code></p>
+      </section>
+
+      <section class="section" id="uil-landing-screen">
+        <div class="section-head"><h2>Lifestyle landing: free card</h2><span>UI Library · Screens</span></div>
+        <p class="note">The free-card landing: app TopBar with a Log in pill, the join OfferCard, a placeholder MemberCard and benefit IconRows on the left; the 5-Night Watch offer, sponsor PersonRow and Get my free card on the right.</p>
+        <div class="uil-meta"><span>g-nav</span><span>g-hero</span><span>g-card</span><span>g-get</span><span>g-offer</span><span>g-sponsor</span><span>g-cta</span></div>
+        <div class="uil-shots">
+          <figure class="uil-shot uil-phone">
+            <figcaption>Phone · 390<a href="ui-library/landing-screen-390.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/landing-screen-390.webp" width="390" height="1474" loading="lazy" alt="Lifestyle landing: free card at 390px" /></div>
+          </figure>
+          <figure class="uil-shot uil-desk">
+            <figcaption>Desktop · 1440<a href="ui-library/landing-screen-1440.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/landing-screen-1440.webp" width="1440" height="1063" loading="lazy" alt="Lifestyle landing: free card at 1440px" /></div>
+          </figure>
+        </div>
+        <p class="uil-code">Code: <code>gutguard-ui/components/sections/AuthPanel.tsx</code> <code>gutguard-ui/showcase/examples/LandingScreen.tsx</code></p>
+      </section>
+
+      <section class="section" id="uil-signup-flow-screen">
+        <div class="section-head"><h2>Lifestyle sign-up flow</h2><span>UI Library · Screens</span></div>
+        <p class="note">Sign up, Code, First step and Log in, built from StepProgress, TextField, Checkbox, CodeInput, OfferCard and ListRow. The white bar on top is a showcase-only switcher between the four screens.</p>
+        <div class="uil-meta"><span>g-signup</span><span>g-code</span><span>g-first</span><span>g-login</span></div>
+        <div class="uil-shots">
+          <figure class="uil-shot uil-phone">
+            <figcaption>Phone · 390<a href="ui-library/signup-flow-screen-390.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/signup-flow-screen-390.webp" width="390" height="1042" loading="lazy" alt="Lifestyle sign-up flow at 390px" /></div>
+          </figure>
+          <figure class="uil-shot uil-desk">
+            <figcaption>Desktop · 1440<a href="ui-library/signup-flow-screen-1440.webp" target="_blank" rel="noopener">Full size ↗</a></figcaption>
+            <div class="uil-frame"><img src="ui-library/signup-flow-screen-1440.webp" width="1440" height="760" loading="lazy" alt="Lifestyle sign-up flow at 1440px" /></div>
+          </figure>
+        </div>
+        <p class="uil-code">Code: <code>gutguard-ui/components/sections/AuthPanel.tsx</code> <code>gutguard-ui/showcase/examples/SignUpFlowScreen.tsx</code></p>
+      </section>
+      <!-- GG-UI-LIBRARY:END -->
+
+
+
+
+
+      <footer style="margin-top:64px;padding-top:20px;border-top:1px solid var(--rule);color:var(--ink-3);font-size:13px">
+        GutGuard Design System · visual source Doctors HTML · open <code style="color:var(--ink)">Showcase/index.html</code> in a browser
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    // Lightweight segment/tab toggling for the showcase
+    document.querySelectorAll('.segment').forEach(group => {
+      group.addEventListener('click', e => {
+        const btn = e.target.closest('button');
+        if (!btn) return;
+        group.querySelectorAll('button').forEach(b => b.classList.remove('on'));
+        btn.classList.add('on');
+      });
+    });
+    document.querySelectorAll('.tabs').forEach(group => {
+      group.addEventListener('click', e => {
+        const btn = e.target.closest('button');
+        if (!btn) return;
+        group.querySelectorAll('button').forEach(b => {
+          b.classList.remove('on');
+          b.setAttribute('aria-selected', 'false');
+        });
+        btn.classList.add('on');
+        btn.setAttribute('aria-selected', 'true');
+      });
+    });
+    document.querySelectorAll('.side > button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        btn.parentElement.querySelectorAll(':scope > button').forEach(b => b.classList.remove('on'));
+        if (!btn.style.color || btn.style.color === '') btn.classList.add('on');
+        else btn.classList.add('on');
+      });
+    });
+    document.querySelectorAll('.acc-head').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.acc-item');
+        const open = item.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    });
+    document.querySelectorAll('.stepper').forEach(step => {
+      const val = step.querySelector('.val');
+      step.addEventListener('click', e => {
+        const btn = e.target.closest('button');
+        if (!btn || btn.disabled) return;
+        let n = parseInt(val.textContent, 10) || 0;
+        if (btn.getAttribute('aria-label') === 'Decrease') n = Math.max(0, n - 1);
+        else n += 1;
+        val.textContent = String(n);
+        const dec = step.querySelector('[aria-label="Decrease"]');
+        if (dec) dec.disabled = n <= 0;
+      });
+    });
+    const dp = document.querySelector('.dp-grid');
+    if (dp) {
+      dp.addEventListener('click', e => {
+        const btn = e.target.closest('button');
+        if (!btn || btn.classList.contains('mute')) return;
+        dp.querySelectorAll('button').forEach(b => b.classList.remove('on'));
+        btn.classList.add('on');
+      });
+    }
+    document.querySelectorAll('.switch').forEach(sw => {
+      sw.addEventListener('click', () => {
+        const on = sw.getAttribute('aria-checked') === 'true';
+        sw.setAttribute('aria-checked', on ? 'false' : 'true');
+      });
+    });
+  </script>
+</body>
+</html>

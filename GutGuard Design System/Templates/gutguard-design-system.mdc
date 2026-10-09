@@ -1,0 +1,34 @@
+---
+description: Always read GutGuard Obsidian design system before any frontend work — never edit the vault
+alwaysApply: true
+---
+
+# GutGuard Design System (required)
+
+Before creating or editing UI (*.tsx, *.jsx, *.css, *.html, Stitch, layouts, components):
+
+1. READ the Obsidian vault design system first. Do not invent a new look.
+2. Set `GG_DS` to **this machine’s** path to the synced folder `GutGuard Design System`
+   (everyone replaces this — do not keep a teammate’s PC path).
+
+   Example:
+   `GG_DS` = `C:\Users\<you>\OneDrive\Documents\Obsidian Vault\GutGuard Design System`
+
+3. Required reads:
+   - `{GG_DS}/00 - OWNER — Read only.md` (governance)
+   - `{GG_DS}/00 - GutGuard Design System.md`
+   - `{GG_DS}/01 - Visual Foundations.md`
+   - `{GG_DS}/Foundations/Dialects.md`
+   - `{GG_DS}/Components/Index.md`
+4. Also read matching notes in `{GG_DS}/Components/` for every control you implement, and `{GG_DS}/03 - Portable CSS Starter.md` for CSS tokens. Optional: `{GG_DS}/Showcase/index.html`
+5. Visual truth = Doctors + this vault. Prototypes only define structure/IA.
+6. Use bone / ultramarine / Fraunces / Inter Tight. One dialect per screen.
+
+## Hard rule — vault is read-only
+
+- **NEVER** create, edit, rename, or delete files under `GutGuard Design System/` (Obsidian).
+- Implement UI only in the **product repository**.
+- If the design system itself needs a change, tell the user to ask the **owner (Najee)** — do not patch the vault from a teammate machine.
+- If the vault path is missing or wrong, STOP and ask — do not freestyle UI.
+
+Human guide: `{GG_DS}/07 - Using the DS with Cursor.md`
